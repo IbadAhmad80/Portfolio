@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/header.scss";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { FiMoon, FiSun } from "react-icons/fi";
 import Logo from "../common/Logo";
 
 const LINKS = [
@@ -11,7 +12,7 @@ const LINKS = [
   { label: "Contact", id: "contact" },
 ];
 
-const NavBar = () => {
+const NavBar = ({ theme, onToggleTheme }) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
@@ -67,6 +68,14 @@ const NavBar = () => {
         </nav>
 
         <div className="navbar__actions">
+          <button
+            className="navbar__theme"
+            onClick={onToggleTheme}
+            aria-label="Toggle light/dark theme"
+            title="Toggle theme"
+          >
+            {theme === "dark" ? <FiSun /> : <FiMoon />}
+          </button>
           <a
             href="#contact"
             className="navbar__cta"

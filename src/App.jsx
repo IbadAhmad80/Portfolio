@@ -10,6 +10,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 function App() {
+  const [theme, setTheme] = React.useState(
+    () => localStorage.getItem("theme") || "light"
+  );
+
   React.useEffect(() => {
     Aos.init({
       offset: 120,
@@ -19,9 +23,17 @@ function App() {
     });
   }, []);
 
+  React.useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () =>
+    setTheme((t) => (t === "light" ? "dark" : "light"));
+
   return (
     <div className="App">
-      <NavBar />
+      <NavBar theme={theme} onToggleTheme={toggleTheme} />
       <section id="home">
         <Home />
       </section>

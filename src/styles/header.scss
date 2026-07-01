@@ -119,6 +119,24 @@
     }
   }
 
+  &__theme {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: var(--transition);
+    &:hover {
+      border-color: $teal;
+      color: $teal;
+    }
+  }
+
   &__toggle {
     display: none;
     background: transparent;

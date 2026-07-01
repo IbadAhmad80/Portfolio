@@ -16,8 +16,9 @@ html {
 body {
   overflow-x: hidden;
   font-family: $primary-font;
-  color: $body;
-  background: #fff;
+  color: var(--text);
+  background: var(--page-bg);
+  transition: background 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -40,6 +41,36 @@ img {
   --radius: #{$radius};
   --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.6);
   --transition: 0.25s ease;
+
+  // ── Themeable tokens (light defaults) ─────────────────────────
+  --page-bg: #ffffff;
+  --section-alt: #f5f6f8;
+  --card-bg: #ffffff;
+  --card-border: #eceef1;
+  --chip-bg: #eef0f3;
+  --chip-border: #e2e5ea;
+  --track-bg: #e6e8eb;
+  --heading: #{$ink};
+  --text: #5b6472;
+  --muted-text: #8a8f97;
+  --icon-bg: #f2f3f5;
+  --icon-color: #6b7280;
+}
+
+[data-theme="dark"] {
+  --page-bg: #0e1420;
+  --section-alt: #131b28;
+  --card-bg: #1a2230;
+  --card-border: #28323f;
+  --chip-bg: #1e2735;
+  --chip-border: #2b3648;
+  --track-bg: #29323f;
+  --heading: #eef2f7;
+  --text: #b3bdc9;
+  --muted-text: #8592a0;
+  --icon-bg: #232d3c;
+  --icon-color: #aab4c0;
+  --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.9);
 }
 
 // ── Section heading (shared) ────────────────────────────────────
@@ -50,7 +81,7 @@ img {
   padding-top: 8vh;
 
   &__title {
-    color: $ink;
+    color: var(--heading);
     font-family: $display-font;
     font-size: 2.4rem;
     letter-spacing: -0.01em;
@@ -67,7 +98,7 @@ img {
   }
 
   &__subtitle {
-    color: $body;
+    color: var(--text);
     font-size: 1rem;
     max-width: 540px;
     margin-top: 1.4rem;
@@ -108,12 +139,12 @@ img {
   }
 
   &--primary {
-    background: $teal;
-    color: $bg-dark;
-    box-shadow: 0 12px 30px -12px rgba($teal, 0.7);
+    background: linear-gradient(100deg, $teal, $pink);
+    color: #fff;
+    box-shadow: 0 12px 30px -12px rgba($pink, 0.7);
     &:hover {
       transform: translateY(-2px);
-      background: color.adjust($teal, $lightness: 6%);
+      box-shadow: 0 16px 34px -12px rgba($pink, 0.85);
       .btn__icon {
         transform: translateX(4px);
       }

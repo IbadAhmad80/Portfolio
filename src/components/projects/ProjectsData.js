@@ -21,10 +21,6 @@ import soulz5 from "../../assets/soulz/soulz-5.png";
 import warbls2 from "../../assets/warbls/warbls-2.png";
 import warbls3 from "../../assets/warbls/warbls-3.png";
 import warbls4 from "../../assets/warbls/warbls-4.png";
-import portfolioHero from "../../assets/portfolio.jpg";
-import portfolio3 from "../../assets/portfolio/Capture-1.PNG";
-import portfolio4 from "../../assets/portfolio/Capture-2.PNG";
-import portfolio5 from "../../assets/portfolio/Capture-3.PNG";
 import checkmate1 from "../../assets/itsacheckmate/checkmate-1.png";
 import checkmate2 from "../../assets/itsacheckmate/checkmate-2.png";
 import checkmate3 from "../../assets/itsacheckmate/checkmate-3.png";
@@ -125,19 +121,6 @@ export const data = [
       "Cold-email platform for agencies with unlimited accounts, inbox rotation, warmup, AI replies, 200+ integrations, forms, and analytics in one place.",
   },
   {
-    name: "Freshprep",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&q=80",
-    tags: ["Node", "React", "Payments"],
-    groups: ["Product / SaaS", "Full Stack"],
-    deployed: "https://www.freshprep.ca/",
-    github: "",
-    role: "Full Stack",
-    date: "2023",
-    description:
-      "Canada's #1 meal-kit platform. Re-architected the core ordering and fulfilment engine to handle 20,000+ active subscribers and $4M/month at 99.9% uptime.",
-  },
-  {
     name: "Lazy Leadz",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80",
@@ -203,18 +186,5 @@ export const data = [
     date: "April 2021",
     description:
       "A polished marketing/landing experience built with React and pure SCSS, focused on smooth motion and responsive layout.",
-  },
-  {
-    name: "Portfolio",
-    image: portfolioHero,
-    gallery: [portfolio3, portfolio4, portfolio5],
-    tags: ["React", "SASS", "Vite"],
-    groups: ["Frontend"],
-    deployed: "https://findibad.netlify.app/",
-    github: "https://github.com/IbadAhmad80/Portfolio",
-    role: "Frontend",
-    date: "2021 – 2026",
-    description:
-      "This very site — a personal portfolio showcasing projects and open-source work. Recently migrated to Vite with an upgraded hero, particle background, and consistent design system.",
   },
 ];

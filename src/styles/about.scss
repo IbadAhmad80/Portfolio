@@ -39,12 +39,12 @@
     place-items: center;
     color: #fff;
     font-size: 2.15rem;
-    background: $teal;
+    background: linear-gradient(135deg, $teal, $pink);
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
 
   &__title {
-    color: #4a4d52;
+    color: var(--heading);
     font-family: $display-font;
     font-weight: 700;
     font-size: 1.05rem;
@@ -52,7 +52,7 @@
   }
 
   &__desc {
-    color: #6f7378;
+    color: var(--muted-text);
     font-size: 0.82rem;
     line-height: 1.5;
   }
@@ -80,7 +80,7 @@
   }
 
   &__label {
-    color: $ink;
+    color: var(--heading);
     font-family: $display-font;
     text-align: center;
     font-size: 1.5rem;
@@ -89,7 +89,7 @@
   }
 
   &__text {
-    color: #616161;
+    color: var(--text);
     line-height: 1.75;
     text-align: justify;
     font-size: 0.9rem;
@@ -129,7 +129,7 @@
   &__name {
     font-family: $display-font;
     font-weight: 600;
-    color: #3a4048;
+    color: var(--heading);
     font-size: 1rem;
   }
   &__pct {
@@ -141,7 +141,7 @@
   &__track {
     height: 10px;
     border-radius: 999px;
-    background-color: #e6e8eb;
+    background-color: var(--track-bg);
     overflow: hidden;
   }
   &__fill {
