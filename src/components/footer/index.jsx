@@ -3,53 +3,51 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FaStackOverflow, FaHackerrank } from "react-icons/fa";
 import "../../styles/footer.scss";
 
+const SOCIALS = [
+  {
+    href: "https://www.hackerrank.com/IbadAhmad",
+    title: "HackerRank",
+    icon: <FaHackerrank />,
+  },
+  {
+    href: "https://www.linkedin.com/in/ibad-ahmad",
+    title: "LinkedIn",
+    icon: <AiFillLinkedin />,
+  },
+  {
+    href: "https://github.com/IbadAhmad80",
+    title: "GitHub",
+    icon: <AiFillGithub />,
+  },
+  {
+    href: "https://stackoverflow.com/users/story/14998000?view=Timeline",
+    title: "Stack Overflow",
+    icon: <FaStackOverflow />,
+  },
+];
+
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <div id="footer-container">
-      <div id="icons-container" data-aos="fade-right" data-aos-offset="10">
-        <div id="social-icon">
+      <div id="icons-container" data-aos="fade-up" data-aos-offset="10">
+        {SOCIALS.map((s) => (
           <a
-            href="https://www.hackerrank.com/IbadAhmad"
-            target="blank"
-            style={{ color: "inherit" }}
-            title="HackerRank"
+            key={s.title}
+            id="social-icon"
+            href={s.href}
+            target="_blank"
+            rel="noreferrer"
+            title={s.title}
+            aria-label={s.title}
           >
-            <FaHackerrank />
+            {s.icon}
           </a>
-        </div>
-        <div id="social-icon">
-          <a
-            href="www.linkedin.com/in/ibad-ahmad"
-            target="blank"
-            style={{ color: "inherit" }}
-            title="Linkedin"
-          >
-            <AiFillLinkedin />
-          </a>
-        </div>
-        <div id="social-icon">
-          <a
-            href="https://github.com/IbadAhmad80"
-            target="blank"
-            style={{ color: "inherit" }}
-            title="Github"
-          >
-            <AiFillGithub />
-          </a>
-        </div>
-        <div id="social-icon">
-          <a
-            href="https://stackoverflow.com/users/story/14998000?view=Timeline"
-            target="blank"
-            style={{ color: "inherit" }}
-            title="StackOverFlow"
-          >
-            <FaStackOverflow />
-          </a>
-        </div>
+        ))}
       </div>
       <h6 id="footnote">
-        IBAD AHMAD <span style={{ color: "rgb(248,30,119)" }}>©2021</span>
+        IBAD AHMAD <span>© {year}</span>
       </h6>
     </div>
   );

@@ -111,10 +111,11 @@
         );
         height: 400px;
         width: auto;
-        background-image: url(../assets/dummy-person.png);
-        background-size: 100% 120%;
+        background-image: url(../assets/profile_picture.jpeg);
+        background-size: cover;
         background-color: $primary-2-color;
         background-repeat: no-repeat;
+        background-position: center;
         // background-position: center;
       }
       #profile-introduction {
@@ -141,83 +142,55 @@
 
     #skills-section {
       display: flex;
-      // height: 525px;
       width: 100%;
       flex-direction: column;
-      justify-content: space-around;
-      align-content: center;
+      gap: 1rem;
       @media (max-width: 1090px) {
-        margin-top: -50px;
+        margin-top: -20px;
       }
-      #skill-bar {
-        background-color: #eee;
-        padding: 5px 13px 0 0;
-        flex: auto;
-        height: 30px;
-        margin: 5px 0;
-        width: auto;
-        font-family: $primary-font;
-        font-weight: 600;
-        color: black;
-        text-align: right;
-        font-size: 11pt;
-      }
-      #skill-width {
-        height: 30px;
-        background-color: #00a1a7;
-      }
-      #skill-width-animation {
-        @extend #skill-width;
-        animation: example 1.5s linear 3s 2;
-        animation-fill-mode: forwards;
-        @keyframes example {
-          0% {
-            background-color: #00a1a7;
-            width: 50px;
-          }
-          25% {
-            background-color: #00a1a7;
-            width: 100px;
-          }
-          50% {
-            background-color: #00a1a7;
-            width: 150px;
-          }
-          75% {
-            background-color: #00a1a7;
-            width: 200px;
-          }
-          100% {
-            background-color: #00a1a7;
-            width: 250px;
-          }
+
+      .skill-row {
+        width: 100%;
+        &__head {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          margin-bottom: 6px;
+        }
+        &__name {
+          font-family: $primary-font-bold;
+          font-weight: 700;
+          color: #3a4048;
+          font-size: 0.95rem;
+        }
+        &__pct {
+          font-family: $primary-font;
+          font-weight: 600;
+          color: $primary-2-color;
+          font-size: 0.85rem;
+        }
+        &__track {
+          height: 8px;
+          border-radius: 999px;
+          background-color: #e6e8eb;
+          overflow: hidden;
+        }
+        &__fill {
+          height: 100%;
+          width: 0;
+          border-radius: 999px;
+          background: linear-gradient(
+            90deg,
+            $primary-2-color,
+            $secondary-font
+          );
+          animation: skill-fill 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       }
 
-      #skill-name {
-        padding-top: 5px;
-        background-color: #04c2c9;
-        font-family: $primary-font-bold;
-        font-weight: bolder;
-        color: #fff;
-        // width: clamp(22%, 27%, 27%);
-        margin: 5px 0;
-
-        width: 27%;
-        overflow: auto;
-        height: 30px;
-        font-size: 11pt;
-        text-align: center;
-      }
-      @media (max-width: 500px) {
-        skill-bar {
-          font-size: 9pt;
-          padding: 7px;
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        #skill-name {
-          font-size: 9pt;
-          padding: 7px;
+      @keyframes skill-fill {
+        to {
+          width: var(--target);
         }
       }
     }

@@ -41,12 +41,15 @@ export default function ContactUS() {
 
 const upArrow = {
   textDecoration: "none",
-  marginTop: "0rem",
-  padding: "10px 12px",
+  display: "grid",
+  placeItems: "center",
+  width: "56px",
+  height: "56px",
+  borderRadius: "50%",
   cursor: "pointer",
-  backgroundColor: "rgb(248,30,119)",
+  backgroundColor: "var(--pink)",
   color: "white",
-  fontSize: "25pt",
-  fontWeight: "bolder",
+  fontSize: "26px",
+  boxShadow: "0 14px 30px -12px rgba(227,27,109,0.7)",
   zIndex: "100",
 };

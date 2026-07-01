@@ -1,138 +1,104 @@
 @import "./config.scss";
-/*Desktop View*/
 
-.header {
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 900;
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  background: transparent;
+
+  &.scrolled {
+    background: rgba($surface, 0.92);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 24px -14px rgba(0, 0, 0, 0.7);
+    border-bottom: 2px solid $primary-2-color;
+  }
+
+  &__inner {
+    max-width: 1250px;
+    margin: 0 auto;
+    height: 72px;
+    padding: 0 clamp(1rem, 4vw, 3.4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo img {
+    width: 3.4em;
+    height: auto;
+    display: block;
+  }
+}
+
+.nav-links {
   display: flex;
-  background-color: rgb(27, 36, 47);
-  justify-content: space-between;
   align-items: center;
-  padding: 0px 55px;
-  height: 70px;
-  font-family: $primary-font;
-  color: white;
-  text-decoration: none;
-  border-bottom: 4px solid $primary-2-color;
-  .logo-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .logo {
-    width: 3.5em;
-    height: 3em;
-  }
-  .nav_options {
-    padding-left: 55px;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-gap: 20px;
-    list-style-type: none;
-    cursor: pointer;
-    font-weight: bolder;
-    font-size: 1rem;
+  gap: 0.35rem;
+  list-style: none;
 
-    .option {
-      padding: 1em 1em;
-      &:hover {
-        border: 1px solid rgb(223, 220, 220);
-        transition: 0.2s;
-        background-color: $primary-2-color;
-        font-weight: 800;
-        border: none !important;
-      }
-    }
-    .option_active {
-      display: none;
-      color: maroon;
-      font-weight: bolder;
-      color: white;
-      border-bottom: 1px solid white;
-    }
-  }
-
-  .mobile-option {
-    display: none;
-    transition: 0.2s;
-  }
-  .option :hover {
-    color: white;
-    transition: 0.2s;
+  li a {
+    display: block;
+    padding: 0.6em 1em;
+    color: #fff;
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
     &:hover {
-      color: $secondary-font;
-    }
-  }
-  .mobile_menu {
-    display: none;
-  }
-
-  @media (max-width: 777px) {
-    /*Mobile View */
-    .header {
-      overflow-x: hidden;
-      padding: 0px 10px;
-    }
-
-    .nav_options {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      width: 22.5em;
-      overflow: hidden;
-      height: auto;
-      position: absolute;
-      top: 70px;
-      left: -100%;
-      opacity: 0;
-      transition: all 0.5s ease;
-      flex-direction: column;
-      list-style-type: none;
-    }
-
-    .nav_options.active {
       background-color: $primary-2-color;
-      left: 0;
-      opacity: 1;
-      transition: all 0.8s ease;
-      z-index: 1;
-      align-content: center;
-      padding-left: 0px;
-    }
-
-    .mobile_menu {
-      padding: 10px 0 0 0;
-      font-size: 35px;
-    }
-
-    .option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 8vh;
-      grid-gap: 40px;
-
-      &:hover {
-        border: 1px solid rgb(223, 220, 220);
-        transition: 0.8s;
-        background-color: white !important;
-        color: $primary-2-color;
-        outline: none;
-        border: none;
-      }
-    }
-
-    .mobile_menu {
-      display: block;
+      color: $bg-dark;
     }
   }
 }
-.sticky_header {
-  @extend .header;
-  position: fixed;
-  z-index: 9;
-  width: 100%;
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.9rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 777px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    height: calc(100vh - 72px);
+    width: min(75vw, 320px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 0;
+    background: rgba($surface, 0.98);
+    backdrop-filter: blur(10px);
+    transform: translateX(105%);
+    transition: transform 0.35s ease;
+    box-shadow: -12px 0 30px -18px rgba(0, 0, 0, 0.8);
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    li a {
+      border-radius: 0;
+      padding: 1.1em 1.8em;
+      &:hover {
+        background-color: $primary-2-color;
+      }
+    }
+  }
 }

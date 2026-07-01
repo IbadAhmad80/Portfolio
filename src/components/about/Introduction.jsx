@@ -17,7 +17,8 @@ export default function Introduction() {
             <a
               href="#contact"
               style={{
-                color: "blue",
+                color: "var(--pink)",
+                fontWeight: 700,
                 textDecoration: "none",
               }}
             >

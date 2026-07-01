@@ -10,78 +10,35 @@ import Projects from "./components/projects";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-function debounce(fn, ms) {
-  let timer;
-  return (_) => {
-    clearTimeout(timer);
-    timer = setTimeout((_) => {
-      timer = null;
-      fn.apply(this, arguments);
-    }, ms);
-  };
-}
-
 function App() {
-  const [dimensions, setDimensions] = React.useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-  const [scrolled, setScrolled] = React.useState(false);
-
   React.useEffect(() => {
     Aos.init({
-      offset: 200, // offset (in px) from the original trigger point
-      duration: 1000, // values from 0 to 3000, with step 50m
+      offset: 120,
+      duration: 900,
+      once: true,
+      easing: "ease-out-cubic",
     });
-
-    // screen width eventlistner
-    const debouncedHandleResize = debounce(function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    }, 0);
-
-    window.addEventListener("resize", debouncedHandleResize);
-
-    //window scroll eventlisner
-    const changeHeaderPosition = () => {
-      if (window.scrollY >= 450) setScrolled(true);
-      else setScrolled(false);
-    };
-    //attaching event listner for scroll value
-    window.addEventListener("scroll", changeHeaderPosition);
-    return () => {
-      window.removeEventListener("resize", debouncedHandleResize);
-      window.removeEventListener("scroll", changeHeaderPosition);
-    };
   }, []);
 
   return (
     <div className="App">
-      <div id="home">
-        {dimensions.width < 778 && <NavBar width={window.innerWidth} />}
-        {dimensions.width > 777 && scrolled && (
-          <NavBar width={window.innerWidth} />
-        )}
-
+      <NavBar />
+      <section id="home">
         <Home />
-      </div>
-      <span id="about">
+      </section>
+      <section id="about">
         <About />
-      </span>
-      <span id="projects">
+      </section>
+      <section id="projects">
         <Projects />
-      </span>
-      <span id="blogs">
+      </section>
+      <section id="blogs">
         <Blogs />
-      </span>
-      <span id="contact">
+      </section>
+      <section id="contact">
         <ContactUS />
-      </span>
-      <span>
-        <Footer />
-      </span>
+      </section>
+      <Footer />
     </div>
   );
 }
