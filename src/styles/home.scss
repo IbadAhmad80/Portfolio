@@ -10,10 +10,11 @@
   justify-content: center;
   overflow: hidden;
   background: radial-gradient(
-    circle at 50% 35%,
-    color.adjust($primary-color, $lightness: 6%) 0%,
-    $bg-dark 70%
-  );
+      circle at 50% 30%,
+      rgba($teal, 0.12),
+      transparent 55%
+    ),
+    linear-gradient(140deg, #0b2b2d 0%, #10182c 52%, #2a1330 100%);
   font-family: $primary-font;
   text-align: center;
   padding: 0 1.25rem;

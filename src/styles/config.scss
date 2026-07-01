@@ -26,3 +26,8 @@ $radius: 12px;
 @mixin gradient() {
   background: linear-gradient(100deg, $teal, $pink);
 }
+
+// Cohesive dark brand gradient for dark sections (teal → navy → pink tint).
+@mixin brand-dark() {
+  background: linear-gradient(140deg, #0b2b2d 0%, #10182c 50%, #2a1330 100%);
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 // Percentage-based skills, laid out in a compact 2-column grid.
 const SKILLS = [
@@ -22,15 +23,25 @@ const SKILLS = [
 
 export default function Skills() {
   return (
-    <div className="skills" data-aos="fade-left">
-      {SKILLS.map((s) => (
-        <div className="skill" key={s.name} style={{ "--val": `${s.value}%` }}>
+    <div className="skills" data-aos="fade-left" data-aos-duration="800">
+      {SKILLS.map((s, i) => (
+        <div className="skill" key={s.name}>
           <div className="skill__head">
             <span className="skill__name">{s.name}</span>
             <span className="skill__pct">{s.value}%</span>
           </div>
           <div className="skill__track">
-            <div className="skill__fill" />
+            <motion.div
+              className="skill__fill"
+              initial={{ width: 0 }}
+              whileInView={{ width: `${s.value}%` }}
+              viewport={{ once: true, amount: 0.6 }}
+              transition={{
+                duration: 1,
+                delay: (i % 8) * 0.06,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            />
           </div>
         </div>
       ))}

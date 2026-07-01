@@ -1,8 +1,19 @@
 import React from "react";
 
-export default function SingleBlog({ title, date, description, image, link }) {
+export default function SingleBlog({
+  title,
+  date,
+  description,
+  image,
+  link,
+  index = 0,
+}) {
   return (
-    <article className="blog-card" data-aos="zoom-in">
+    <article
+      className="blog-card"
+      data-aos="fade-up"
+      data-aos-delay={index * 120}
+    >
       <a
         href={link}
         target="_blank"

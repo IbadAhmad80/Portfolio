@@ -36,9 +36,9 @@ export default function About() {
     <div className="about">
       <SectionHeading title="About" />
 
-      <div className="about__highlights" data-aos="zoom-in">
-        {HIGHLIGHTS.map((h) => (
-          <Designs key={h.title} {...h} />
+      <div className="about__highlights">
+        {HIGHLIGHTS.map((h, i) => (
+          <Designs key={h.title} {...h} index={i} />
         ))}
       </div>
 

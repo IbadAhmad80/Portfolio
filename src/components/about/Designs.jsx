@@ -1,8 +1,12 @@
 import React from "react";
 
-export default function Designs({ title, description, icon: Icon }) {
+export default function Designs({ title, description, icon: Icon, index = 0 }) {
   return (
-    <div className="highlight-card">
+    <div
+      className="highlight-card"
+      data-aos="fade-up"
+      data-aos-delay={index * 120}
+    >
       <div className="highlight-card__badge">
         <Icon />
       </div>

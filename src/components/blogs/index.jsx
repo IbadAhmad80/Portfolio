@@ -47,8 +47,8 @@ export default function Blogs() {
     <div className="blogs">
       <SectionHeading title="Blogs" />
       <div className="blogs__grid">
-        {POSTS.map((post) => (
-          <SingleBlog key={post.title} {...post} />
+        {POSTS.map((post, i) => (
+          <SingleBlog key={post.title} {...post} index={i} />
         ))}
       </div>
     </div>
