@@ -144,13 +144,19 @@
     font-family: $primary-font;
     font-size: 0.9rem;
     line-height: 1.6;
-    flex: 1;
+    // Clamp to a fixed number of lines so every card is the same height.
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   &__tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    margin-top: auto; // pin tags to the bottom regardless of text length
   }
 }
 

@@ -32,13 +32,13 @@
   text-align: center;
 
   &__badge {
-    width: 84px;
-    height: 84px;
+    width: 104px;
+    height: 68px;
     margin: 0 auto 1rem;
     display: grid;
     place-items: center;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.7rem;
     background: $teal;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   }
@@ -61,15 +61,16 @@
 // ── Profile (photo + bio) ───────────────────────────────────────
 .profile {
   &__photo {
-    height: 380px;
-    width: min(100%, 380px);
+    width: 100%;
+    max-width: 480px;
+    height: 360px;
     margin: 0 auto;
-    background: url(../assets/profile.jpeg) center center / cover no-repeat,
-      $teal;
+    // Wide hexagon; bias the crop so the (slightly left) headshot sits centred.
+    background: url(../assets/profile.jpeg) 42% 28% / cover no-repeat, $teal;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 
     @media (max-width: 450px) {
-      height: 300px;
+      height: 280px;
     }
   }
 

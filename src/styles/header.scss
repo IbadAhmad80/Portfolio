@@ -1,6 +1,6 @@
 @use "./config" as *;
 
-.site-header {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,140 +10,173 @@
     backdrop-filter 0.3s ease;
   background: transparent;
 
-  &.scrolled {
-    background: rgba($surface, 0.72);
-    backdrop-filter: blur(14px) saturate(140%);
-    box-shadow: 0 8px 30px -16px rgba(0, 0, 0, 0.8);
-    border-bottom: 1px solid transparent;
-    border-image: linear-gradient(100deg, $teal, $pink) 1;
+  &--scrolled {
+    background: rgba($surface, 0.82);
+    backdrop-filter: blur(16px) saturate(150%);
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.85);
   }
 
   &__inner {
-    position: relative;
     width: 100%;
-    margin: 0 auto;
-    height: 74px;
-    padding: 0 clamp(1.25rem, 4vw, 4rem);
+    height: 80px;
+    padding: 0 clamp(1.25rem, 4vw, 3.5rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
   }
 
-  // Desktop: keep the logo left but visually centre the nav links.
-  @media (min-width: 778px) {
-    nav {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  &__logo {
+  // ── Brand ─────────────────────────────────────────────────────
+  &__brand {
     display: flex;
     align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    font-family: $display-font;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: -0.01em;
+    b {
+      color: $teal;
+    }
     svg {
-      display: block;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
     &:hover svg {
-      transform: rotate(-6deg) scale(1.08);
+      transform: rotate(-6deg) scale(1.1);
       filter: drop-shadow(0 6px 14px rgba($teal, 0.55));
     }
   }
-}
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  list-style: none;
+  // ── Centered pill nav ─────────────────────────────────────────
+  &__nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 
-  li a {
-    position: relative;
-    display: block;
-    padding: 0.55em 0.95em;
-    color: #eef1f5;
-    font-family: $display-font;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.25s ease;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0.95em;
-      right: 0.95em;
-      bottom: 0.35em;
-      height: 2px;
-      border-radius: 2px;
-      background: linear-gradient(100deg, $teal, $pink);
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 0.3s ease;
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      list-style: none;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
     }
 
-    &:hover {
-      color: #fff;
-      &::after {
-        transform: scaleX(1);
+    li a {
+      display: block;
+      padding: 0.5em 1.15em;
+      border-radius: 999px;
+      font-family: $display-font;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #cfd6df;
+      text-decoration: none;
+      transition: color 0.25s ease, background 0.25s ease;
+      &:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.09);
+      }
+      &.active {
+        color: $bg-dark;
+        background: linear-gradient(100deg, $teal, $pink);
+        box-shadow: 0 6px 16px -8px rgba($pink, 0.7);
       }
     }
   }
-}
 
-.nav-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1.9rem;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.25s ease;
-  &:hover {
-    color: $teal;
+  // ── Right side ────────────────────────────────────────────────
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.62em 1.35em;
+    border-radius: 999px;
+    font-family: $display-font;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(100deg, $teal, $pink);
+    box-shadow: 0 10px 24px -12px rgba($pink, 0.7);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px -12px rgba($pink, 0.85);
+    }
+  }
+
+  &__toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
   }
 }
 
-@media (max-width: 777px) {
-  .nav-toggle {
+// ── Mobile ──────────────────────────────────────────────────────
+@media (max-width: 880px) {
+  .navbar__inner {
+    height: 72px;
+  }
+
+  .navbar__toggle {
     display: block;
   }
 
-  .nav-links {
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__nav {
     position: fixed;
-    top: 74px;
+    top: 72px;
     right: 0;
-    height: calc(100vh - 74px);
-    width: min(78vw, 320px);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: 1rem 0;
+    height: calc(100vh - 72px);
+    width: min(80vw, 330px);
+    justify-content: flex-start;
     background: rgba($surface, 0.98);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(14px);
     transform: translateX(105%);
     transition: transform 0.35s ease;
-    box-shadow: -12px 0 30px -18px rgba(0, 0, 0, 0.8);
+    box-shadow: -14px 0 34px -20px rgba(0, 0, 0, 0.85);
 
     &.open {
       transform: translateX(0);
     }
 
+    ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.35rem;
+      width: 100%;
+      padding: 1.4rem;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      backdrop-filter: none;
+    }
+
     li a {
-      padding: 1.1em 1.9em;
-      font-size: 0.95rem;
-      &::after {
-        left: 1.9em;
-        bottom: 0.85em;
-      }
-      &:hover {
-        background: rgba($teal, 0.12);
-      }
+      border-radius: 10px;
+      padding: 0.95em 1.2em;
+      font-size: 0.92rem;
     }
   }
 }
