@@ -1,8 +1,24 @@
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 import AOS from "aos";
 import { data, CATEGORIES } from "./ProjectsData";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.07 },
+  },
+};
+
+const card = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
 
 export default function ImageGrid({ onSelect }) {
   const [category, setCategory] = React.useState("All");
@@ -31,19 +47,20 @@ export default function ImageGrid({ onSelect }) {
         ))}
       </div>
 
-      <motion.div layout className="project-grid">
-        <AnimatePresence mode="popLayout">
-          {projects.map((project) => (
-            <motion.article
-              key={project.name}
-              layout
-              initial={{ opacity: 0, scale: 0.92 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.92 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="project-card"
-              onClick={() => onSelect(project)}
-            >
+      <motion.div
+        key={category}
+        className="project-grid"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        {projects.map((project) => (
+          <motion.article
+            key={project.name}
+            variants={card}
+            className="project-card"
+            onClick={() => onSelect(project)}
+          >
               <div className="project-card__media">
                 <img src={project.image} alt={project.name} loading="lazy" />
                 <span className="project-card__overlay">View details</span>
@@ -88,9 +105,8 @@ export default function ImageGrid({ onSelect }) {
                   ))}
                 </div>
               </div>
-            </motion.article>
-          ))}
-        </AnimatePresence>
+          </motion.article>
+        ))}
       </motion.div>
     </div>
   );
