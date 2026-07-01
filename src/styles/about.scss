@@ -81,7 +81,7 @@
   #profile_section {
     margin: 8em 2em 5em 2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 420px));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 420px));
     justify-content: center;
     grid-gap: 100px 150px;
 

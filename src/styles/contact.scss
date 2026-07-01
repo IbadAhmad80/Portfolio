@@ -2,11 +2,11 @@
 @import "./about.scss";
 
 #contact_container {
-  margin: 0px 0 6vh 0;
+  margin: 0;
   clip-path: polygon(0 0, 51% 13%, 100% 0, 100% 100%, 0 100%, 0 49%);
   background-color: rgb(37, 41, 52);
-  min-height: 860px;
-  padding: 6vh 0 10vh 0;
+  min-height: 780px;
+  padding: 6vh 0 8vh 0;
   #heading_container {
     margin-top: 130px;
     display: grid;
@@ -44,10 +44,10 @@
     #input_field {
       outline: none;
       padding-left: 1.5em;
-      height: 6vh;
+      height: 56px;
       font-style: $primary-font;
       margin-top: 2vh;
-      width: 460px;
+      width: min(460px, 88vw);
       color: $primary-2-color;
       caret-color: $primary-2-color;
       border: none;

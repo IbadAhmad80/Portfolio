@@ -1,6 +1,7 @@
 import React from "react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { FaStackOverflow, FaHackerrank } from "react-icons/fa";
+import { FiArrowUp } from "react-icons/fi";
 import "../../styles/footer.scss";
 
 const SOCIALS = [
@@ -31,6 +32,10 @@ export default function Footer() {
 
   return (
     <div id="footer-container">
+      <a href="#home" id="back-to-top" aria-label="Back to top">
+        <FiArrowUp />
+      </a>
+
       <div id="icons-container" data-aos="fade-up" data-aos-offset="10">
         {SOCIALS.map((s) => (
           <a
