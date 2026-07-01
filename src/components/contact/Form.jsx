@@ -1,9 +1,14 @@
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-// Web3Forms access key (free, no account): https://web3forms.com
-// Put your key in a .env file as VITE_WEB3FORMS_ACCESS_KEY=xxxx
-const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+// Where messages are delivered.
+const CONTACT_EMAIL = "ibad23ahmad@gmail.com";
+
+// Optional: set VITE_WEB3FORMS_ACCESS_KEY in .env for the spam-safe path
+// (email not exposed in source). If unset, we fall back to FormSubmit,
+// which needs zero config — the first submission sends a one-time
+// confirmation email to CONTACT_EMAIL; click it once and you're live.
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
 export default function ContactForm() {
   const [formData, setData] = React.useState({
@@ -13,16 +18,8 @@ export default function ContactForm() {
   });
   const [sending, setSending] = React.useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!ACCESS_KEY) {
-      toast.error("Contact form isn't configured yet.");
-      return;
-    }
-
-    setSending(true);
-    try {
+  const submit = async () => {
+    if (WEB3FORMS_KEY) {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -30,21 +27,45 @@ export default function ContactForm() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: ACCESS_KEY,
+          access_key: WEB3FORMS_KEY,
           subject: `New message from ${formData.name} — Portfolio`,
           from_name: "Portfolio Contact Form",
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
+          ...formData,
         }),
       });
-      const data = await res.json();
+      return (await res.json()).success;
+    }
 
-      if (data.success) {
+    // FormSubmit fallback (no key required).
+    const res = await fetch(
+      `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: `New message from ${formData.name} — Portfolio`,
+          _template: "table",
+          ...formData,
+        }),
+      }
+    );
+    const data = await res.json();
+    return data.success === true || data.success === "true";
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    try {
+      const ok = await submit();
+      if (ok) {
         toast.success("Thanks! I'll be in contact with you shortly.");
         setData({ email: "", name: "", message: "" });
       } else {
-        toast.error(data.message || "Something went wrong. Please try again.");
+        toast.error("Couldn't send right now. Please try again.");
       }
     } catch {
       toast.error("Network error. Please try again.");
