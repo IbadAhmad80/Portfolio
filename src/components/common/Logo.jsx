@@ -18,7 +18,7 @@ export default function Logo({ size = 46, className = "" }) {
         </linearGradient>
       </defs>
       <polygon
-        points="50,2 86,26 86,74 50,98 14,74 14,26"
+        points="50,8 95,29 95,71 50,92 5,71 5,29"
         fill="url(#logoGrad)"
       />
       {/* Serif capital "I" */}
