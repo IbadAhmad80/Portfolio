@@ -17,6 +17,7 @@
   }
 
   &__inner {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     height: 72px;
@@ -24,6 +25,16 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  // Desktop: keep the logo left but visually centre the nav links.
+  @media (min-width: 778px) {
+    nav {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__logo img {
