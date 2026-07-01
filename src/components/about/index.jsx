@@ -5,7 +5,7 @@ import { BiAccessibility, BiRocket } from "react-icons/bi";
 import SectionHeading from "../common/SectionHeading";
 import Designs from "./Designs";
 import Introduction from "./Introduction";
-import TechStack from "./TechStack";
+import Skills from "./Skills";
 import "../../styles/about.scss";
 
 const HIGHLIGHTS = [
@@ -44,7 +44,7 @@ export default function About() {
 
       <div className="about__profile">
         <Introduction />
-        <TechStack />
+        <Skills />
       </div>
     </div>
   );
