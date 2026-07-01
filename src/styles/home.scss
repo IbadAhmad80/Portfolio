@@ -103,20 +103,19 @@
     transform: translateX(-50%);
     z-index: 2;
     color: #fff;
-    font-size: 1.6rem;
-    opacity: 0.7;
+    font-size: 1.5rem;
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    width: 46px;
+    height: 46px;
+    border: none;
     border-radius: 50%;
-    transition: var(--transition);
+    background: linear-gradient(100deg, $teal, $pink);
+    box-shadow: 0 12px 26px -12px rgba($pink, 0.7);
+    transition: box-shadow var(--transition);
     animation: hero-bounce 2s ease-in-out infinite;
     &:hover {
-      opacity: 1;
-      border-color: $teal;
-      color: $teal;
+      box-shadow: 0 16px 32px -12px rgba($pink, 0.9);
     }
   }
 }

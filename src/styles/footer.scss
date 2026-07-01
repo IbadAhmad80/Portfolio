@@ -18,15 +18,15 @@
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: $teal;
-    color: $bg-dark;
+    background: linear-gradient(100deg, $teal, $pink);
+    color: #fff;
     font-size: 1.4rem;
     text-decoration: none;
-    box-shadow: 0 14px 30px -12px rgba($teal, 0.7);
-    transition: var(--transition);
+    box-shadow: 0 14px 30px -12px rgba($pink, 0.7);
+    transition: transform var(--transition), box-shadow var(--transition);
     &:hover {
       transform: translate(-50%, -50%) translateY(-4px);
-      background: #fff;
+      box-shadow: 0 18px 34px -12px rgba($pink, 0.85);
     }
   }
 
