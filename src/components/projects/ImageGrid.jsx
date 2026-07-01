@@ -1,107 +1,97 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { data } from "./ProjectsData";
+import { AnimatePresence, motion } from "framer-motion";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 import AOS from "aos";
+import { data, CATEGORIES } from "./ProjectsData";
 
-export default function ImageGrid({ setSelectedImg, setSelectedImgData }) {
-  // const { loading, data } = useQuery(getPackages);
-  const [selectedCategory, setSelectedCatgeory] = React.useState("React");
-  const [activePackages, setActivePackages] = React.useState(null);
+export default function ImageGrid({ onSelect }) {
+  const [category, setCategory] = React.useState("All");
 
-  React.useEffect(() => {
-    document.querySelector(".active").classList.remove("active");
-    document.querySelector(`.${selectedCategory}`).classList.add("active");
-    if (selectedCategory === "all") {
-      setActivePackages(data);
-      return;
-    }
-
-    const filteredprojects =
-      data &&
-      data.filter(({ group }) => {
-        return group.includes(selectedCategory);
-      });
-    setActivePackages(filteredprojects);
-  }, [selectedCategory]);
+  const projects = React.useMemo(() => {
+    if (category === "All") return data;
+    return data.filter((p) => p.groups.includes(category));
+  }, [category]);
 
   React.useEffect(() => {
     AOS.refresh();
-  }, [activePackages]);
+  }, [projects]);
 
   return (
-    <div>
-      <div className="items">
-        <span
-          className="item React active"
-          onClick={() => setSelectedCatgeory("React")}
-        >
-          React / Next
-        </span>
-        <span
-          className="item NodeJS"
-          onClick={() => setSelectedCatgeory("NodeJS")}
-        >
-          Node
-        </span>
-        <span
-          className="item Redux"
-          onClick={() => setSelectedCatgeory("Redux")}
-        >
-          Redux
-        </span>
-
-        <span className="item SASS" onClick={() => setSelectedCatgeory("SASS")}>
-          SASS
-        </span>
-
-        <span className="item Ruby" onClick={() => setSelectedCatgeory("Ruby")}>
-          Rails / Ruby
-        </span>
+    <div className="projects__body">
+      <div className="filter-bar">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            className={`filter-chip${category === cat ? " active" : ""}`}
+            onClick={() => setCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
       </div>
-      <div id="img-grid" data-aos="fade-up" data-aos-duration="1500">
-        {data &&
-          activePackages &&
-          activePackages.map((doc) => (
-            <motion.div
-              id="img-wrap"
-              key={doc.name}
+
+      <motion.div layout className="project-grid">
+        <AnimatePresence mode="popLayout">
+          {projects.map((project) => (
+            <motion.article
+              key={project.name}
               layout
-              whileHover={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="project-card"
+              onClick={() => onSelect(project)}
             >
-              <motion.img
-                src={doc.image2}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0 }}
-                alt="uploaded pic"
-              />
-
-              <div id="overlay">
-                <div id="project-name">{doc.name}</div>
-                <div id="project-technologies">{doc.technologies}</div>
-
-                <button
-                  id="project-modal-btn"
-                  onClick={() => {
-                    // document.querySelector("body").style.overflow = "hidden";
-                    setSelectedImg(doc.images);
-                    setSelectedImgData({
-                      description: doc.description,
-                      deployed: doc.deployed,
-                      github: doc.github,
-                      name: doc.name,
-                      technologies: doc.category,
-                      month_created: doc.month_created,
-                      role: doc.role,
-                    });
-                  }}
-                >
-                  LERAN MORE
-                </button>
+              <div className="project-card__media">
+                <img src={project.image} alt={project.name} loading="lazy" />
+                <span className="project-card__overlay">View details</span>
               </div>
-            </motion.div>
+
+              <div className="project-card__body">
+                <div className="project-card__top">
+                  <h3 className="project-card__title">{project.name}</h3>
+                  <div className="project-card__links">
+                    {project.deployed && (
+                      <a
+                        href={project.deployed}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Visit ${project.name}`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FiArrowUpRight />
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.name} on GitHub`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <FiGithub />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <p className="project-card__desc">{project.description}</p>
+
+                <div className="project-card__tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
           ))}
-      </div>
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

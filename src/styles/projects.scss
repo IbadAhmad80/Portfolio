@@ -1,261 +1,320 @@
 @import "./config.scss";
 @import "./about.scss";
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
 
 #projects-container {
   @extend #about_container;
-  background-color: rgb(245, 245, 245);
-  padding: 1vh 0 14vh 0;
+  background-color: rgb(245, 246, 248);
+  padding: 6vh 0 12vh 0;
+  margin: 0;
 
   #heading_container {
     @extend #main_heading_container;
+    padding-top: 8vh;
     #heading {
       @extend #main_heading;
     }
     #heading_bar {
       @extend #main_heading_bar;
+      margin-bottom: 20px;
+    }
+    #section_subtitle {
+      color: #6b7280;
+      font-family: $primary-font;
+      font-size: 1rem;
+      max-width: 520px;
+      text-align: center;
+      padding: 0 1rem;
     }
   }
 
-  .items {
+  // ── Filter chips ──────────────────────────────────────────────
+  .filter-bar {
     display: flex;
-    width: 100%;
-    padding: 0 20px;
-    justify-content: center;
     flex-wrap: wrap;
-    row-gap: 20px;
-  }
-
-  .items span {
-    padding: 7px 10px;
-    margin: 0 10px;
-    font-size: 13px;
-    font-family: $primary-font-bold;
-    font-weight: 500;
-    font-weight: bold;
-    letter-spacing: 0.01cm;
-    cursor: pointer;
-    color: $primary-font;
-    background-color: transparent;
-    border-radius: 0px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-  }
-
-  .items span.active,
-  .items span:hover {
-    color: #fff;
-    background: $secondary-font;
-  }
-  #img-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    width: 93%;
-    margin: 8vh auto 0 auto;
-    column-gap: 2em;
-    row-gap: 2em;
-
-    @media (max-width: 780px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
-  }
-  #img-wrap {
-    overflow: hidden;
-    opacity: 1;
-    position: relative;
+    gap: 0.6rem;
+    margin: 3vh auto 5vh;
+    padding: 0 1rem;
   }
 
-  #img-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    // animation: project-image-animation 0.3s;
-  }
-
-  #img-wrap:hover #overlay {
-    bottom: 0;
-    height: 100%;
-    opacity: 0.9;
-  }
-
-  #overlay {
-    position: absolute;
-    z-index: 5;
-    bottom: 100%;
-    left: 0;
-    right: 0;
-    background-color: rgb(244, 244, 244);
-    overflow: hidden;
-    width: 100%;
-    height: 0;
-    transition: 0.5s ease;
-  }
-
-  #project-name {
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    font-family: $primary-font-bold;
-    font-weight: bolder;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-    @media (max-width: 900px) {
-      font-size: 16px;
-    }
-  }
-
-  #project-technologies {
-    margin-top: 5vh;
-    @extend #project-name;
+  .filter-chip {
+    padding: 0.55rem 1.1rem;
+    border: 1px solid #d5d9e0;
+    border-radius: 999px;
+    background: #fff;
+    color: #4b5563;
     font-family: $primary-font;
-    font-weight: medium;
-    font-size: 17px;
-    color: $secondary-font;
-  }
-
-  #project-modal-btn {
-    @extend #project-name;
-    width: 40%;
-    margin-top: 18vh;
-    color: black;
-    font-size: 13px;
+    font-size: 0.85rem;
+    font-weight: 600;
     letter-spacing: 0.01cm;
-    text-transform: uppercase;
-    border: 1px solid $secondary-font;
-    background-color: transparent;
-    font-family: $primary-font;
-    font-weight: light;
-    padding: 15px;
-    &:hover {
-      cursor: pointer;
-      background-color: $secondary-font;
-      color: white;
-      transition: 0.3s;
-    }
-  }
-
-  #backdrop {
-    position: fixed;
-    overflow-y: auto;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background: rgba(37 42 52 / 1);
-    z-index: 10;
-  }
-
-  .close-icon {
-    border: 1px solid white;
-    color: white;
     cursor: pointer;
-    float: right;
-    font-size: 25pt;
-    margin: 8px;
-    padding: 5px 5px 0px 5px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: 0.2s linear;
-    z-index: 100;
+    transition: var(--transition);
     &:hover {
-      background-color: $secondary-font;
-      border: none;
+      border-color: $primary-2-color;
+      color: $primary-2-color;
+    }
+    &.active {
+      background: $secondary-font;
+      border-color: $secondary-font;
+      color: #fff;
     }
   }
 
-  #backdrop img {
-    @include modal-design();
-    margin-top: 10px;
-    vertical-align: middle;
-
-    @media (max-width: 800px) {
-      margin-top: 100px;
-      width: 100%;
-      padding: 0 0.5rem;
-    }
-    @media (max-width: 580px) {
-      margin-top: 200px;
-    }
+  // ── Cards grid ────────────────────────────────────────────────
+  .project-grid {
+    width: min(1150px, 92%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
   }
 
-  #selected-image-data {
-    @include modal-design();
-    // background-color: rgba(255 255 255/ 1);
-    margin: 1rem auto 1rem auto;
-    padding: 0.5rem 0 1.7rem 0;
-    color: white;
-    font-family: "Nunito", sans-serif;
-    letter-spacing: 0.01cm;
-
-    @media (max-width: 800px) {
-      width: 100%;
-      padding: 0em 0.8rem;
-    }
-    // box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
-    #selected-project-name {
-      font-family: $primary-font;
-      font-size: 18pt;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-    #selected-project-des {
-      font-size: 11pt;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: rgb(150, 150, 150);
-      text-align: justify;
-    }
-    #selected-project-headings {
-      font-size: 11pt;
-      display: inline;
-      padding: 0 0.2em;
-      margin: 20px 0;
-      font-weight: bolder;
-      display: inline;
-      margin-bottom: 15px;
-    }
-    #selected-project-technology {
-      font-size: 11pt;
-      display: inline;
-      padding: 0 0.2em;
-      margin: 20px 0;
-      font-weight: lighter;
-      color: rgb(150, 150, 150);
-      margin-bottom: 15px;
-      // &:not(:first-child)::before {
-      //   content: " | ";
-      // }
-    }
-    #selected-project-role {
-      font-size: 11pt;
-      color: rgb(150, 150, 150);
-      margin: 20px 0;
-      font-weight: lighter;
-      margin-bottom: 15px;
-    }
-    #site-link {
-      margin: 0em 20px;
-      font-size: 11pt;
-      font-weight: medium;
-      letter-spacing: 0.01cm;
-      text-align: justify;
-      font-family: $primary-font;
-      outline: none;
-      border: none;
-      padding: 0.5rem 1rem;
-      background-color: $secondary-font;
-      color: white;
-      &:hover {
-        background-color: transparent;
-        transition: 0.3s;
+  .project-card {
+    background: #fff;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px -18px rgba(15, 20, 32, 0.4);
+    border: 1px solid #eceef1;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 45px -22px rgba(15, 20, 32, 0.5);
+      .project-card__media img {
+        transform: scale(1.06);
+      }
+      .project-card__overlay {
+        opacity: 1;
       }
     }
+
+    &__media {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #e9ebef;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+    }
+
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba($primary-color, 0.55);
+      color: #fff;
+      font-family: $primary-font;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &__body {
+      padding: 1.25rem 1.35rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+    }
+
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    &__title {
+      color: $primary-color;
+      font-family: $primary-font-bold;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    &__links {
+      display: flex;
+      gap: 0.5rem;
+      a {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        color: #6b7280;
+        background: #f2f3f5;
+        font-size: 1rem;
+        transition: var(--transition);
+        &:hover {
+          background: $primary-2-color;
+          color: #fff;
+        }
+      }
+    }
+
+    &__desc {
+      color: #6b7280;
+      font-family: $primary-font;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+  }
+
+  .tag {
+    font-family: $primary-font;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: $primary-2-color;
+    background: rgba($primary-2-color, 0.1);
+    padding: 0.28rem 0.6rem;
+    border-radius: 6px;
+  }
+}
+
+// ── Modal ───────────────────────────────────────────────────────
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba($bg-dark, 0.8);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+}
+
+.modal-panel {
+  position: relative;
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  font-family: $primary-font;
+
+  .modal-media {
+    background: #0f1420;
+    img {
+      width: 100%;
+      max-height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .modal-info {
+    padding: 1.75rem 2rem 2rem;
+  }
+
+  .modal-title {
+    color: $primary-color;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+  }
+
+  .modal-desc {
+    color: #5b6472;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-meta {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+  }
+
+  .modal-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    font-weight: 700;
+  }
+
+  .modal-value {
+    color: $primary-color;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.75rem;
+    .tag {
+      font-size: 0.75rem;
+      color: $secondary-font;
+      background: rgba($secondary-font, 0.1);
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba($bg-dark, 0.55);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: var(--transition);
+  &:hover {
+    background: $secondary-font;
+  }
+}
+
+// Ghost button variant for use on light surfaces (modal).
+.btn--ghost-dark {
+  color: $primary-color;
+  border-color: #d5d9e0;
+  &:hover {
+    color: $secondary-font;
+    border-color: $secondary-font;
   }
 }
