@@ -1,4 +1,5 @@
-@import "./config.scss";
+@use "sass:color";
+@use "./config" as *;
 
 .hero {
   position: relative;
@@ -10,7 +11,7 @@
   overflow: hidden;
   background: radial-gradient(
     circle at 50% 35%,
-    lighten($primary-color, 6%) 0%,
+    color.adjust($primary-color, $lightness: 6%) 0%,
     $bg-dark 70%
   );
   font-family: $primary-font;
@@ -23,7 +24,6 @@
     z-index: 0;
   }
 
-  // Soft vignette so the copy stays readable over the particles.
   &__overlay {
     position: absolute;
     inset: 0;
@@ -43,7 +43,7 @@
   }
 
   &__eyebrow {
-    color: $primary-2-color;
+    color: $teal;
     font-family: $display-font;
     font-size: clamp(0.9rem, 0.7rem + 1vw, 1.15rem);
     letter-spacing: 0.35em;
@@ -60,17 +60,12 @@
     letter-spacing: -0.02em;
     font-size: clamp(2.6rem, 1.5rem + 6vw, 6rem);
     margin-bottom: 1rem;
+    background: linear-gradient(100deg, #ffffff 0%, $teal 55%, $pink 100%);
     background-size: 200% auto;
-    animation: hero-gradient 6s ease infinite;
-    background: linear-gradient(
-      100deg,
-      #ffffff 0%,
-      $primary-2-color 55%,
-      $secondary-font 100%
-    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: hero-gradient 6s ease infinite;
   }
 
   &__role {
@@ -120,54 +115,8 @@
     animation: hero-bounce 2s ease-in-out infinite;
     &:hover {
       opacity: 1;
-      border-color: $primary-2-color;
-      color: $primary-2-color;
-    }
-  }
-}
-
-// ── Shared buttons ──────────────────────────────────────────────
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.6rem;
-  border-radius: var(--radius);
-  font-family: $display-font;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: transform 0.2s ease, background var(--transition),
-    color var(--transition), box-shadow var(--transition);
-
-  &__icon {
-    transition: transform 0.3s ease;
-  }
-
-  &--primary {
-    background: $primary-2-color;
-    color: $bg-dark;
-    box-shadow: 0 12px 30px -12px rgba($primary-2-color, 0.7);
-    &:hover {
-      transform: translateY(-2px);
-      background: lighten($primary-2-color, 6%);
-      .btn__icon {
-        transform: translateX(4px);
-      }
-    }
-  }
-
-  &--ghost {
-    background: transparent;
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.4);
-    &:hover {
-      transform: translateY(-2px);
-      border-color: $secondary-font;
-      color: $secondary-font;
+      border-color: $teal;
+      color: $teal;
     }
   }
 }

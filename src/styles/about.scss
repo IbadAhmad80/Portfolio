@@ -1,182 +1,149 @@
-@import "./config.scss";
+@use "./config" as *;
 
-#about_container {
-  margin: 10vh 0;
-  #main_heading_container {
-    padding: 10vh 0 0 0;
-    display: grid;
-    place-items: center;
-    #main_heading {
-      color: #2b2f36;
-      font-family: $display-font;
-      font-size: 2.4rem;
-      letter-spacing: -0.01em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-    #main_heading_bar {
-      background: var(--gradient);
-      height: 4px;
-      border-radius: 4px;
-      margin: 22px 0 55px 0;
-      width: 72px;
-    }
-  }
+.about {
+  padding-bottom: 4vh;
 
-  #design_container {
+  // ── Highlight cards (Fast / Responsive / Intuitive / Dynamic) ──
+  &__highlights {
+    @include container(900px);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    #single-polygon-container {
-      flex: 0 1 130px;
-      height: auto;
-      margin: 2rem 3em;
-      #design-polygon {
-        background-color: $primary-2-color;
-        clip-path: polygon(
-          25% 0%,
-          75% 0%,
-          100% 50%,
-          75% 100%,
-          25% 100%,
-          0% 50%
-        );
-        display: flex;
-        justify-content: center;
-        height: 59%;
-        width: 100%;
-        align-items: center;
-        #design-logo {
-          margin-top: 0.15em;
-          color: #fff;
-          font-size: 42pt;
-          width: 45%;
-        }
-      }
+    gap: 2rem 3rem;
+    margin-top: 5vh;
+  }
 
-      #design-content {
-        line-height: 3em;
-        #design-title {
-          color: #616161;
-          font-size: 1.05em;
-          text-align: center;
-          font-weight: bolder;
-          font-family: $primary-font-bold;
-        }
-        #design-description {
-          color: #616161;
-          text-align: center;
-          line-height: 12pt !important;
-          font-family: $primary-font;
-          font-size: 0.8em;
-          font-weight: 500;
-          width: 110%;
-          margin-left: -7px;
-        }
-      }
-      @media (max-width: 468px) {
-        margin: 2rem 1em;
-      }
+  &__profile {
+    @include container($container);
+    margin-top: 7vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+    align-items: start;
+    gap: 4rem 6rem;
+
+    @media (max-width: 900px) {
+      gap: 3rem;
+    }
+  }
+}
+
+.highlight-card {
+  flex: 0 1 150px;
+  text-align: center;
+
+  &__badge {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 1rem;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 2rem;
+    background: $teal;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  &__title {
+    color: #4a4d52;
+    font-family: $display-font;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  &__desc {
+    color: #6f7378;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+}
+
+// ── Profile (photo + bio) ───────────────────────────────────────
+.profile {
+  &__photo {
+    height: 380px;
+    width: min(100%, 380px);
+    margin: 0 auto;
+    background: url(../assets/profile.jpeg) center center / cover no-repeat,
+      $teal;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+
+    @media (max-width: 450px) {
+      height: 300px;
     }
   }
 
-  #profile_section {
-    margin: 7em 2em 4em 2em;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 460px));
-    align-items: start;
-    justify-content: center;
-    grid-gap: 60px 110px;
+  &__bio {
+    margin-top: 5vh;
+  }
 
-    @media (max-width: 450px) {
-      grid-template-columns: repeat(auto-fit, minmax(80%, 95%));
-      #profile-container > #profile-image {
-        height: 33vh !important;
-      }
+  &__label {
+    color: $ink;
+    font-family: $display-font;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  &__text {
+    color: #616161;
+    line-height: 1.75;
+    text-align: justify;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  &__link {
+    color: $pink;
+    font-weight: 700;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
+  }
+}
 
-    #profile-container {
-      #profile-image {
-        clip-path: polygon(
-          25% 0%,
-          75% 0%,
-          100% 50%,
-          75% 100%,
-          25% 100%,
-          0% 50%
-        );
-        height: 380px;
-        width: min(100%, 380px);
-        margin: 0 auto;
-        background-image: url(../assets/profile.jpeg);
-        background-size: cover;
-        background-color: $primary-2-color;
-        background-repeat: no-repeat;
-        background-position: center center;
-      }
-      #profile-introduction {
-        margin: 5vh 0 0 0;
-        #who-this {
-          color: #616161;
-          font-family: $primary-font-bold;
-          line-height: 18pt;
-          text-align: center;
-          font-size: 25px;
-          font-weight: bolder;
-        }
-        #who-this-description {
-          color: #616161;
-          line-height: 18pt;
-          padding: 15px 0;
-          font-family: $primary-font;
-          text-align: justify;
-          font-size: 0.85em !important;
-          font-weight: 500;
-        }
-      }
+// ── Tech stack chips ────────────────────────────────────────────
+.tech-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+
+  .tech-group {
+    &__label {
+      font-family: $display-font;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $teal;
+      margin-bottom: 0.7rem;
     }
-
-    #tech-stack {
-      width: 100%;
+    &__chips {
       display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
 
-      .tech-group {
-        &__label {
-          font-family: $primary-font-bold;
-          font-weight: 800;
-          font-size: 0.78rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: $primary-2-color;
-          margin-bottom: 0.7rem;
-        }
-        &__chips {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-      }
-
-      .tech-chip {
-        font-family: $primary-font;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #3a4048;
-        background: #eef0f3;
-        border: 1px solid #e2e5ea;
-        padding: 0.4rem 0.75rem;
-        border-radius: 8px;
-        transition: var(--transition);
-        cursor: default;
-        &:hover {
-          background: $primary-2-color;
-          border-color: $primary-2-color;
-          color: #fff;
-          transform: translateY(-2px);
-        }
-      }
+  .tech-chip {
+    font-family: $primary-font;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3a4048;
+    background: #eef0f3;
+    border: 1px solid #e2e5ea;
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    transition: var(--transition);
+    cursor: default;
+    &:hover {
+      background: $teal;
+      border-color: $teal;
+      color: #fff;
+      transform: translateY(-2px);
     }
   }
 }

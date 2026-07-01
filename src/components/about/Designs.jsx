@@ -1,18 +1,13 @@
 import React from "react";
-import "../../styles/about.scss";
 
-export default function Designs({ title, description, VscRocket }) {
+export default function Designs({ title, description, icon: Icon }) {
   return (
-    <div id="single-polygon-container">
-      <div id="design-polygon">
-        <div id="design-logo">
-          <VscRocket />
-        </div>
+    <div className="highlight-card">
+      <div className="highlight-card__badge">
+        <Icon />
       </div>
-      <div id="design-content">
-        <div id="design-title">{title}</div>
-        <div id="design-description">{description}</div>
-      </div>
+      <div className="highlight-card__title">{title}</div>
+      <div className="highlight-card__desc">{description}</div>
     </div>
   );
 }

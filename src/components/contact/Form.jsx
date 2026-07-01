@@ -75,11 +75,11 @@ export default function ContactForm() {
   };
 
   return (
-    <div style={{ zIndex: "100" }} data-aos="fade-up" data-aos-duration="1000">
+    <div data-aos="fade-up" data-aos-duration="1000">
       <Toaster position="top-center" reverseOrder={false} />
       <form onSubmit={handleSubmit} autoComplete="off">
         <input
-          id="input_field"
+          className="field"
           type="text"
           value={formData.name}
           onChange={(e) => setData({ ...formData, name: e.target.value })}
@@ -87,10 +87,8 @@ export default function ContactForm() {
           placeholder="Name"
           name="name"
         />
-
-        <br />
         <input
-          id="input_field"
+          className="field"
           type="email"
           value={formData.email}
           onChange={(e) => setData({ ...formData, email: e.target.value })}
@@ -98,18 +96,15 @@ export default function ContactForm() {
           placeholder="Email"
           name="email"
         />
-
-        <br />
         <textarea
-          id="message"
+          className="field field--textarea"
           value={formData.message}
           onChange={(e) => setData({ ...formData, message: e.target.value })}
           required
           placeholder="Message"
           name="message"
         />
-        <br />
-        <button type="submit" id="form_submit_btn" disabled={sending}>
+        <button type="submit" className="submit-btn" disabled={sending}>
           {sending ? "Sending…" : "Send"}
         </button>
       </form>

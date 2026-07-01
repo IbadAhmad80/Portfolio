@@ -1,65 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap");
+// ── Design tokens (SCSS only — no CSS output) ───────────────────
+@use "sass:color";
 
-// ── Design tokens ───────────────────────────────────────────────
 $primary-font: "Raleway", sans-serif;
-$primary-font-bold: "Raleway", sans-serif;
 $display-font: "Space Grotesk", "Raleway", sans-serif;
 
 // Core palette
 $bg-dark: rgb(15, 20, 32); // page/base dark
 $primary-color: rgb(37, 42, 52); // panels / navy
 $surface: rgb(27, 36, 47); // header / footer
-$primary-2-color: rgb(4, 194, 201); // teal accent
-$secondary-font: rgb(227, 27, 109); // pink accent
+$teal: rgb(4, 194, 201); // teal accent
+$pink: rgb(227, 27, 109); // pink accent
 $muted: #8f9aa7;
+$ink: #2b2f36; // headings on light
+$body: #5b6472; // body text on light
 
-// Expose the same tokens as CSS custom properties for consistency
-:root {
-  --bg-dark: #{$bg-dark};
-  --navy: #{$primary-color};
-  --surface: #{$surface};
-  --teal: #{$primary-2-color};
-  --pink: #{$secondary-font};
-  --muted: #{$muted};
-  --font: #{$primary-font};
-  --font-display: #{$display-font};
-  --gradient: linear-gradient(100deg, #{$primary-2-color}, #{$secondary-font});
-  --radius: 12px;
-  --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.6);
-  --transition: 0.25s ease;
+// Layout
+$container: 1150px;
+$radius: 12px;
+
+@mixin container($max: $container) {
+  width: min($max, 92%);
+  margin-inline: auto;
 }
 
-@mixin button() {
-  border: 2px solid white;
-  font-family: $primary-font;
-  letter-spacing: 0.04cm;
-  background: transparent;
-  transition: 0.2s;
-  font-size: 12pt;
-  outline: none;
-  letter-spacing: 0.02cm;
-  @content;
-  &:hover {
-    background-color: $primary-2-color;
-    cursor: pointer;
-  }
-}
-
-@mixin about-grids($margin, $grid-gap, $base, $max-size) {
-  margin: $margin;
-  display: grid;
-  justify-content: space-around;
-  grid-gap: $grid-gap;
-  grid-template-columns: repeat(auto-fill, minmax($base, $max-size));
-  @content;
-}
-
-@mixin modal-design() {
-  width: 85%;
-  margin: 0 auto;
-
-  @media (min-width: 1000px) {
-    width: 72%;
-    @content;
-  }
+@mixin gradient() {
+  background: linear-gradient(100deg, $teal, $pink);
 }

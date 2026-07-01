@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/blogs.scss";
+import SectionHeading from "../common/SectionHeading";
 import SingleBlog from "./SingleBlog";
 import redux from "../../assets/redux-blog.jpg";
 import react from "../../assets/react-blog.jpg";
@@ -43,16 +44,9 @@ const POSTS = [
 
 export default function Blogs() {
   return (
-    <div id="blogs-container">
-      <div id="heading_container">
-        <h2 id="heading" data-aos="fade-right" data-aos-duration="1000">
-          Blogs
-        </h2>
-        <h2 id="heading_bar" data-aos="zoom-out" data-aos-duration="2000">
-          {}
-        </h2>
-      </div>
-      <div id="blogs-section">
+    <div className="blogs">
+      <SectionHeading title="Blogs" />
+      <div className="blogs__grid">
         {POSTS.map((post) => (
           <SingleBlog key={post.title} {...post} />
         ))}

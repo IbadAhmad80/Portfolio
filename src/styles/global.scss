@@ -1,0 +1,160 @@
+@use "sass:color";
+@use "./config" as *;
+
+// ── Reset ───────────────────────────────────────────────────────
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: $primary-font;
+  color: $body;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+}
+
+// ── Tokens exposed as CSS custom properties ─────────────────────
+:root {
+  --bg-dark: #{$bg-dark};
+  --navy: #{$primary-color};
+  --surface: #{$surface};
+  --teal: #{$teal};
+  --pink: #{$pink};
+  --muted: #{$muted};
+  --font: #{$primary-font};
+  --font-display: #{$display-font};
+  --gradient: linear-gradient(100deg, #{$teal}, #{$pink});
+  --radius: #{$radius};
+  --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.6);
+  --transition: 0.25s ease;
+}
+
+// ── Section heading (shared) ────────────────────────────────────
+.section-head {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding-top: 8vh;
+
+  &__title {
+    color: $ink;
+    font-family: $display-font;
+    font-size: 2.4rem;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__bar {
+    @include gradient();
+    height: 4px;
+    width: 72px;
+    border-radius: 4px;
+    margin: 22px 0 0;
+  }
+
+  &__subtitle {
+    color: $body;
+    font-size: 1rem;
+    max-width: 540px;
+    margin-top: 1.4rem;
+    padding: 0 1rem;
+    line-height: 1.6;
+  }
+
+  &--light {
+    .section-head__title {
+      color: #fff;
+    }
+    .section-head__subtitle {
+      color: $teal;
+      font-weight: 600;
+    }
+  }
+}
+
+// ── Buttons (shared) ────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: $radius;
+  font-family: $display-font;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, background var(--transition),
+    color var(--transition), border-color var(--transition);
+
+  &__icon {
+    transition: transform 0.3s ease;
+  }
+
+  &--primary {
+    background: $teal;
+    color: $bg-dark;
+    box-shadow: 0 12px 30px -12px rgba($teal, 0.7);
+    &:hover {
+      transform: translateY(-2px);
+      background: color.adjust($teal, $lightness: 6%);
+      .btn__icon {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    &:hover {
+      transform: translateY(-2px);
+      border-color: $pink;
+      color: $pink;
+    }
+  }
+
+  &--ghost-dark {
+    color: $ink;
+    border-color: #d5d9e0;
+    &:hover {
+      color: $pink;
+      border-color: $pink;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// ── Tag / chip (shared) ─────────────────────────────────────────
+.tag {
+  font-family: $primary-font;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $teal;
+  background: rgba($teal, 0.1);
+  padding: 0.28rem 0.6rem;
+  border-radius: 6px;
+}

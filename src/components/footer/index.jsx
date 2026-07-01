@@ -31,16 +31,16 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div id="footer-container">
-      <a href="#home" id="back-to-top" aria-label="Back to top">
+    <footer className="footer">
+      <a href="#home" className="footer__top" aria-label="Back to top">
         <FiArrowUp />
       </a>
 
-      <div id="icons-container" data-aos="fade-up" data-aos-offset="10">
+      <div className="footer__socials" data-aos="fade-up" data-aos-offset="10">
         {SOCIALS.map((s) => (
           <a
             key={s.title}
-            id="social-icon"
+            className="social-link"
             href={s.href}
             target="_blank"
             rel="noreferrer"
@@ -51,9 +51,9 @@ export default function Footer() {
           </a>
         ))}
       </div>
-      <h6 id="footnote">
+      <h6 className="footer__note">
         IBAD AHMAD <span>© {year}</span>
       </h6>
-    </div>
+    </footer>
   );
 }

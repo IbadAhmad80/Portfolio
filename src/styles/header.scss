@@ -1,4 +1,4 @@
-@import "./config.scss";
+@use "./config" as *;
 
 .site-header {
   position: fixed;
@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 900;
   transition: background 0.3s ease, box-shadow 0.3s ease,
-    backdrop-filter 0.3s ease, padding 0.3s ease;
+    backdrop-filter 0.3s ease;
   background: transparent;
 
   &.scrolled {
@@ -15,7 +15,7 @@
     backdrop-filter: blur(14px) saturate(140%);
     box-shadow: 0 8px 30px -16px rgba(0, 0, 0, 0.8);
     border-bottom: 1px solid transparent;
-    border-image: var(--gradient) 1;
+    border-image: linear-gradient(100deg, $teal, $pink) 1;
   }
 
   &__inner {
@@ -48,7 +48,7 @@
     }
     &:hover svg {
       transform: rotate(-6deg) scale(1.08);
-      filter: drop-shadow(0 6px 14px rgba($primary-2-color, 0.55));
+      filter: drop-shadow(0 6px 14px rgba($teal, 0.55));
     }
   }
 }
@@ -72,7 +72,6 @@
     text-decoration: none;
     transition: color 0.25s ease;
 
-    // Animated gradient underline.
     &::after {
       content: "";
       position: absolute;
@@ -81,7 +80,7 @@
       bottom: 0.35em;
       height: 2px;
       border-radius: 2px;
-      background: var(--gradient);
+      background: linear-gradient(100deg, $teal, $pink);
       transform: scaleX(0);
       transform-origin: left center;
       transition: transform 0.3s ease;
@@ -106,7 +105,7 @@
   line-height: 1;
   transition: color 0.25s ease;
   &:hover {
-    color: $primary-2-color;
+    color: $teal;
   }
 }
 
@@ -143,7 +142,7 @@
         bottom: 0.85em;
       }
       &:hover {
-        background: rgba($primary-2-color, 0.12);
+        background: rgba($teal, 0.12);
       }
     }
   }

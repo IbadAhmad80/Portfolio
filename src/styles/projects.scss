@@ -1,196 +1,160 @@
-@import "./config.scss";
-@import "./about.scss";
+@use "./config" as *;
 
-#projects-container {
-  @extend #about_container;
+.projects {
   background-color: rgb(245, 246, 248);
-  padding: 6vh 0 12vh 0;
-  margin: 0;
+  padding-bottom: 12vh;
+}
 
-  #heading_container {
-    @extend #main_heading_container;
-    padding-top: 8vh;
-    #heading {
-      @extend #main_heading;
-    }
-    #heading_bar {
-      @extend #main_heading_bar;
-      margin-bottom: 20px;
-    }
-    #section_subtitle {
-      color: #6b7280;
-      font-family: $primary-font;
-      font-size: 1rem;
-      max-width: 520px;
-      text-align: center;
-      padding: 0 1rem;
-    }
+// ── Filter chips ──────────────────────────────────────────────
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 5vh auto;
+  padding: 0 1rem;
+}
+
+.filter-chip {
+  padding: 0.55rem 1.1rem;
+  border: 1px solid #d5d9e0;
+  border-radius: 999px;
+  background: #fff;
+  color: #4b5563;
+  font-family: $primary-font;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  &:hover {
+    border-color: $teal;
+    color: $teal;
   }
-
-  // ── Filter chips ──────────────────────────────────────────────
-  .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.6rem;
-    margin: 3vh auto 5vh;
-    padding: 0 1rem;
-  }
-
-  .filter-chip {
-    padding: 0.55rem 1.1rem;
-    border: 1px solid #d5d9e0;
-    border-radius: 999px;
-    background: #fff;
-    color: #4b5563;
-    font-family: $primary-font;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.01cm;
-    cursor: pointer;
-    transition: var(--transition);
-    &:hover {
-      border-color: $primary-2-color;
-      color: $primary-2-color;
-    }
-    &.active {
-      background: $secondary-font;
-      border-color: $secondary-font;
-      color: #fff;
-    }
-  }
-
-  // ── Cards grid ────────────────────────────────────────────────
-  .project-grid {
-    width: min(1150px, 92%);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-    gap: 2rem;
-  }
-
-  .project-card {
-    background: #fff;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 10px 30px -18px rgba(15, 20, 32, 0.4);
-    border: 1px solid #eceef1;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 45px -22px rgba(15, 20, 32, 0.5);
-      .project-card__media img {
-        transform: scale(1.06);
-      }
-      .project-card__overlay {
-        opacity: 1;
-      }
-    }
-
-    &__media {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #e9ebef;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-      }
-    }
-
-    &__overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      background: rgba($primary-color, 0.55);
-      color: #fff;
-      font-family: $primary-font;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &__body {
-      padding: 1.25rem 1.35rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      flex: 1;
-    }
-
-    &__top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-
-    &__title {
-      color: $primary-color;
-      font-family: $display-font;
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    &__links {
-      display: flex;
-      gap: 0.5rem;
-      a {
-        display: grid;
-        place-items: center;
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        color: #6b7280;
-        background: #f2f3f5;
-        font-size: 1rem;
-        transition: var(--transition);
-        &:hover {
-          background: $primary-2-color;
-          color: #fff;
-        }
-      }
-    }
-
-    &__desc {
-      color: #6b7280;
-      font-family: $primary-font;
-      font-size: 0.9rem;
-      line-height: 1.6;
-      flex: 1;
-    }
-
-    &__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-  }
-
-  .tag {
-    font-family: $primary-font;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: $primary-2-color;
-    background: rgba($primary-2-color, 0.1);
-    padding: 0.28rem 0.6rem;
-    border-radius: 6px;
+  &.active {
+    background: $pink;
+    border-color: $pink;
+    color: #fff;
   }
 }
 
-// ── Modal ───────────────────────────────────────────────────────
+// ── Cards grid ────────────────────────────────────────────────
+.project-grid {
+  @include container($container);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -18px rgba(15, 20, 32, 0.4);
+  border: 1px solid #eceef1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 45px -22px rgba(15, 20, 32, 0.5);
+    .project-card__media img {
+      transform: scale(1.06);
+    }
+    .project-card__overlay {
+      opacity: 1;
+    }
+  }
+
+  &__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #e9ebef;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba($primary-color, 0.55);
+    color: #fff;
+    font-family: $display-font;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &__body {
+    padding: 1.25rem 1.35rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-family: $display-font;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  &__links {
+    display: flex;
+    gap: 0.5rem;
+    a {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      color: #6b7280;
+      background: #f2f3f5;
+      font-size: 1rem;
+      transition: var(--transition);
+      &:hover {
+        background: $teal;
+        color: #fff;
+      }
+    }
+  }
+
+  &__desc {
+    color: #6b7280;
+    font-family: $primary-font;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
+
+// ── Modal ─────────────────────────────────────────────────────
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -214,7 +178,7 @@
   font-family: $primary-font;
 
   .modal-media {
-    background: #0f1420;
+    background: $bg-dark;
     img {
       width: 100%;
       max-height: 460px;
@@ -275,12 +239,8 @@
     gap: 0.5rem;
     margin-bottom: 1.75rem;
     .tag {
-      font-size: 0.75rem;
-      color: $secondary-font;
-      background: rgba($secondary-font, 0.1);
-      padding: 0.3rem 0.65rem;
-      border-radius: 6px;
-      font-weight: 600;
+      color: $pink;
+      background: rgba($pink, 0.1);
     }
   }
 
@@ -308,16 +268,6 @@
   cursor: pointer;
   transition: var(--transition);
   &:hover {
-    background: $secondary-font;
-  }
-}
-
-// Ghost button variant for use on light surfaces (modal).
-.btn--ghost-dark {
-  color: $primary-color;
-  border-color: #d5d9e0;
-  &:hover {
-    color: $secondary-font;
-    border-color: $secondary-font;
+    background: $pink;
   }
 }

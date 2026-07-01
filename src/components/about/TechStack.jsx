@@ -65,7 +65,7 @@ const STACK = [
 
 export default function TechStack() {
   return (
-    <div id="tech-stack" data-aos="fade-left">
+    <div className="tech-stack" data-aos="fade-left">
       {STACK.map((group) => (
         <div className="tech-group" key={group.label}>
           <h5 className="tech-group__label">{group.label}</h5>
