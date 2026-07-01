@@ -184,8 +184,8 @@ img {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: $teal;
-  background: rgba($teal, 0.1);
-  padding: 0.28rem 0.6rem;
+  color: #fff;
+  background: linear-gradient(100deg, $teal, $pink);
+  padding: 0.3rem 0.65rem;
   border-radius: 6px;
 }
