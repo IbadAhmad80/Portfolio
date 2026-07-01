@@ -39,14 +39,16 @@
     }
   }
 
-  &__logo img {
-    width: 3.4em;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    &:hover {
-      transform: rotate(-6deg) scale(1.06);
-      filter: drop-shadow(0 6px 14px rgba($primary-2-color, 0.6));
+  &__logo {
+    display: flex;
+    align-items: center;
+    svg {
+      display: block;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    &:hover svg {
+      transform: rotate(-6deg) scale(1.08);
+      filter: drop-shadow(0 6px 14px rgba($primary-2-color, 0.55));
     }
   }
 }

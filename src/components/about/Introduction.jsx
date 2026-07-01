@@ -7,12 +7,14 @@ export default function Introduction() {
       <div id="profile-introduction">
         <h5 id="who-this">Who's this guy</h5>
         <p id="who-this-description">
-          Hello there! I'm a dynamic <b>Senior Full Stack Developer</b> boasting
-          a background in Computer Science. I thrive in the realm of JavaScript,
-          specializing in frameworks like ReactJS, NodeJS, ExpressJS, NextJS,
-          and ROR. Whether you're eyeing a collaboration or simply want to geek
-          out about tech, I'm all ears. Let's turn visions into reality,
-          together!
+          I'm a <b>Senior Full Stack Developer</b> with a Computer Science
+          background and years of experience shipping production web apps. I
+          work across the JavaScript ecosystem — <b>React, Next.js, Node</b>, and
+          TypeScript — and increasingly at the intersection of <b>AI</b> and{" "}
+          <b>no-code</b>, building LLM-powered products and automations that
+          reach the market fast. I care about clean architecture, thoughtful
+          UX, and code that's a pleasure to maintain. Whether you're scaling a
+          product or starting from an idea, let's build something that lasts.
           <span style={{ justifyContent: "center" }}>
             <a
               href="#contact"

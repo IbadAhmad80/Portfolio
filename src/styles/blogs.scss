@@ -3,7 +3,7 @@
 
 #blogs-container {
   @extend #about_container;
-  padding: 0 0 7vh 0;
+  padding: 0 0 8vh 0;
 
   #heading_container {
     @extend #main_heading_container;
@@ -16,60 +16,74 @@
       margin-bottom: 1.5em;
     }
   }
+
   #blogs-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    line-height: 1.4rem;
+    gap: 3rem 2rem;
+    padding: 0 1.5rem;
+  }
 
-    #blogs-inner-section {
-      #blog-image {
-        width: 380px;
-        height: auto;
-      }
+  .blog-card {
+    flex: 0 1 320px;
+    max-width: 340px;
 
-      @media (max-width: 880px) and (min-width: 750px) {
-        #blog-image {
-          width: 320px;
-          height: auto;
-        }
+    &__thumb {
+      display: block;
+      overflow: hidden;
+      border-radius: var(--radius);
+      aspect-ratio: 16 / 10;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
       }
-      @media (max-width: 600px) {
-        #blog-image {
-          width: 92vw;
-          height: auto;
-        }
+      &:hover img {
+        transform: scale(1.06);
       }
     }
-    #blog-title {
-      padding-top: 4vh;
+
+    &__title {
+      margin-top: 1.4rem;
       font-family: $display-font;
-      font-size: 15pt;
-      color: #616161;
-      transition: 0.2s;
-      &:hover {
-        color: $primary-2-color;
-        cursor: pointer;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.35;
+      a {
+        color: #2b2f36;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        &:hover {
+          color: $primary-2-color;
+        }
       }
     }
-    #blog-bar {
-      background: #04c2c9;
+
+    &__bar {
+      display: block;
       height: 3px;
-      margin: 10px 0px;
-      width: 23%;
+      width: 46px;
+      border-radius: 3px;
+      margin: 12px 0;
+      background: var(--gradient);
     }
-    #blog-date {
-      padding-top: 1vh;
+
+    &__date {
       font-family: $primary-font;
-      font-weight: lighter;
-      color: #616161;
-      font-size: 10pt;
+      font-weight: 400;
+      color: #8a8f97;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
     }
-    #blog-description {
-      padding-top: 2vh;
-      font-weight: medium;
-      font-size: 0.83em;
-      text-align: justify;
+
+    &__desc {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: #616161;
       font-family: $primary-font;
     }
   }

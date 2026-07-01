@@ -107,12 +107,11 @@
         );
         height: 400px;
         width: auto;
-        background-image: url(../assets/profile_picture.jpeg);
+        background-image: url(../assets/profile.jpeg);
         background-size: cover;
         background-color: $primary-2-color;
         background-repeat: no-repeat;
-        background-position: center;
-        // background-position: center;
+        background-position: center top;
       }
       #profile-introduction {
         margin: 5vh 0 0 0;

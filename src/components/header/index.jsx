@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/header.scss";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import logo from "../../assets/logo.png";
+import Logo from "../common/Logo";
 
 const LINKS = [
   { label: "Home", href: "#home" },
@@ -30,7 +30,7 @@ const NavBar = () => {
           className="site-header__logo"
           onClick={() => setOpen(false)}
         >
-          <img src={logo} alt="Ibad Ahmad logo" />
+          <Logo />
         </a>
 
         <nav>
