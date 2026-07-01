@@ -79,23 +79,17 @@
   }
 
   #profile_section {
-    margin: 8em 2em 5em 2em;
+    margin: 7em 2em 4em 2em;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 420px));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 460px));
+    align-items: start;
     justify-content: center;
-    grid-gap: 100px 150px;
+    grid-gap: 60px 110px;
 
     @media (max-width: 450px) {
       grid-template-columns: repeat(auto-fit, minmax(80%, 95%));
       #profile-container > #profile-image {
         height: 33vh !important;
-      }
-      #skills-section {
-        width: 100%;
-        justify-self: center;
-        @media (max-width: 400px) {
-          width: 120% !important;
-        }
       }
     }
 
@@ -140,57 +134,45 @@
       }
     }
 
-    #skills-section {
-      display: flex;
+    #tech-stack {
       width: 100%;
+      display: flex;
       flex-direction: column;
-      gap: 1rem;
-      @media (max-width: 1090px) {
-        margin-top: -20px;
-      }
+      gap: 1.4rem;
 
-      .skill-row {
-        width: 100%;
-        &__head {
-          display: flex;
-          justify-content: space-between;
-          align-items: baseline;
-          margin-bottom: 6px;
-        }
-        &__name {
+      .tech-group {
+        &__label {
           font-family: $primary-font-bold;
-          font-weight: 700;
-          color: #3a4048;
-          font-size: 0.95rem;
-        }
-        &__pct {
-          font-family: $primary-font;
-          font-weight: 600;
+          font-weight: 800;
+          font-size: 0.78rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
           color: $primary-2-color;
-          font-size: 0.85rem;
+          margin-bottom: 0.7rem;
         }
-        &__track {
-          height: 8px;
-          border-radius: 999px;
-          background-color: #e6e8eb;
-          overflow: hidden;
-        }
-        &__fill {
-          height: 100%;
-          width: 0;
-          border-radius: 999px;
-          background: linear-gradient(
-            90deg,
-            $primary-2-color,
-            $secondary-font
-          );
-          animation: skill-fill 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        &__chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
         }
       }
 
-      @keyframes skill-fill {
-        to {
-          width: var(--target);
+      .tech-chip {
+        font-family: $primary-font;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #3a4048;
+        background: #eef0f3;
+        border: 1px solid #e2e5ea;
+        padding: 0.4rem 0.75rem;
+        border-radius: 8px;
+        transition: var(--transition);
+        cursor: default;
+        &:hover {
+          background: $primary-2-color;
+          border-color: $primary-2-color;
+          color: #fff;
+          transform: translateY(-2px);
         }
       }
     }

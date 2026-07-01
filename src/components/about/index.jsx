@@ -5,7 +5,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import { BiAccessibility, BiRocket } from "react-icons/bi";
 import Designs from "./Designs";
 import Introduction from "./Introduction";
-import Skills from "./Skills";
+import TechStack from "./TechStack";
 
 export default function About() {
   return (
@@ -48,23 +48,7 @@ export default function About() {
       </div>
       <div id="profile_section">
         <Introduction />
-        <span id="skills-section" data-aos="fade-left">
-          <Skills skill={"CSS"} width={80} />
-          <Skills skill={"HTML"} width={90} />
-          <Skills skill={"Javascript"} width={80} />
-          <Skills skill={"ReactJS"} width={90} />
-          <Skills skill={"NodeJS"} width={80} />
-          <Skills skill={"ExpressJS"} width={80} />
-          <Skills skill={"NextJS"} width={85} />
-          <Skills skill={"Ruby / Rails"} width={60} />
-          <Skills skill={"Redux"} width={80} />
-          <Skills skill={"React Query"} width={85} />
-          <Skills skill={"AWS"} width={70} />
-          <Skills skill={"UI Libraries"} width={70} />
-          <Skills skill={"Firebase"} width={75} />
-          <Skills skill={"GraphQL"} width={75} />
-          <Skills skill={"Typescript"} width={80} />
-        </span>
+        <TechStack />
       </div>
     </div>
   );
