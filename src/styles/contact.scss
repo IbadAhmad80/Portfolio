@@ -1,9 +1,23 @@
 @use "./config" as *;
 
 .contact {
+  position: relative;
   clip-path: polygon(0 0, 51% 13%, 100% 0, 100% 100%, 0 100%, 0 49%);
   @include brand-dark();
   padding: 14vh 0 8vh 0;
+  overflow: hidden;
+
+  &__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .section-head,
+  &__form {
+    position: relative;
+    z-index: 1;
+  }
 
   &__form {
     margin-top: 5vh;

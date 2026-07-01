@@ -1,10 +1,9 @@
-import React, { useMemo, useState, useEffect } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+import React, { useMemo } from "react";
 import { motion } from "framer-motion";
 import ReactTypingEffect from "react-typing-effect";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FiArrowDown } from "react-icons/fi";
+import ParticlesBg from "../common/ParticlesBg";
 import "../../styles/home.scss";
 
 const TypingStyle = {
@@ -15,15 +14,6 @@ const TypingStyle = {
 };
 
 export default function Home() {
-  const [init, setInit] = useState(false);
-
-  // Initialise the particles engine once for the app lifetime.
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => setInit(true));
-  }, []);
-
   const options = useMemo(
     () => ({
       fpsLimit: 120,
@@ -67,13 +57,11 @@ export default function Home() {
 
   return (
     <div className="hero">
-      {init && (
-        <Particles
-          id="tsparticles"
-          className="hero__particles"
-          options={options}
-        />
-      )}
+      <ParticlesBg
+        id="tsparticles"
+        className="hero__particles"
+        options={options}
+      />
 
       <div className="hero__overlay" />
 
