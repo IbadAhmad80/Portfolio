@@ -53,7 +53,7 @@ export default function Blogs() {
         </h2>
       </div>
       <div id="blogs-section">
-        {POSTS.slice(0, 3).map((post) => (
+        {POSTS.map((post) => (
           <SingleBlog key={post.title} {...post} />
         ))}
       </div>

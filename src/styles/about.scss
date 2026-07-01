@@ -105,13 +105,14 @@
           25% 100%,
           0% 50%
         );
-        height: 400px;
-        width: auto;
+        height: 380px;
+        width: min(100%, 380px);
+        margin: 0 auto;
         background-image: url(../assets/profile.jpeg);
         background-size: cover;
         background-color: $primary-2-color;
         background-repeat: no-repeat;
-        background-position: center top;
+        background-position: center center;
       }
       #profile-introduction {
         margin: 5vh 0 0 0;

@@ -23,6 +23,8 @@
     justify-content: center;
     gap: 3rem 2rem;
     padding: 0 1.5rem;
+    max-width: 1120px; // keeps at most 3 cards per row
+    margin: 0 auto;
   }
 
   .blog-card {
