@@ -111,7 +111,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.15rem 2rem;
+  gap: 1.7rem 2.5rem;
   align-content: start;
 
   @media (max-width: 520px) {
@@ -124,22 +124,22 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 6px;
+    margin-bottom: 9px;
   }
   &__name {
     font-family: $display-font;
     font-weight: 600;
     color: #3a4048;
-    font-size: 0.85rem;
+    font-size: 1rem;
   }
   &__pct {
     font-family: $primary-font;
     font-weight: 600;
     color: $teal;
-    font-size: 0.78rem;
+    font-size: 0.88rem;
   }
   &__track {
-    height: 7px;
+    height: 10px;
     border-radius: 999px;
     background-color: #e6e8eb;
     overflow: hidden;
