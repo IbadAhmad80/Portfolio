@@ -1,10 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;600;700&display=swap");
+
+// ── Design tokens ───────────────────────────────────────────────
 $primary-font: "Raleway", sans-serif;
 $primary-font-bold: "Raleway", sans-serif;
-$primary-color: rgb(37, 42, 52);
-$secondary-font: rgb(227, 27, 109);
-$primary-2-color: rgb(4, 194, 201);
+
+// Core palette
+$bg-dark: rgb(15, 20, 32); // page/base dark
+$primary-color: rgb(37, 42, 52); // panels / navy
+$surface: rgb(27, 36, 47); // header / footer
+$primary-2-color: rgb(4, 194, 201); // teal accent
+$secondary-font: rgb(227, 27, 109); // pink accent
+$muted: #8f9aa7;
+
+// Expose the same tokens as CSS custom properties for consistency
+:root {
+  --bg-dark: #{$bg-dark};
+  --navy: #{$primary-color};
+  --surface: #{$surface};
+  --teal: #{$primary-2-color};
+  --pink: #{$secondary-font};
+  --muted: #{$muted};
+  --font: #{$primary-font};
+  --radius: 12px;
+  --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.6);
+  --transition: 0.25s ease;
+}
 
 @mixin button() {
   border: 2px solid white;

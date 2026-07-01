@@ -79,7 +79,7 @@
   }
 
   #profile_section {
-    margin: 4em 2em 5em 2em;
+    margin: 8em 2em 5em 2em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 420px));
     justify-content: center;
@@ -109,11 +109,13 @@
           25% 100%,
           0% 50%
         );
-        height: 50vh;
+        height: 400px;
+        width: auto;
         background-image: url(../assets/dummy-person.png);
         background-size: 100% 120%;
         background-color: $primary-2-color;
         background-repeat: no-repeat;
+        // background-position: center;
       }
       #profile-introduction {
         margin: 5vh 0 0 0;
@@ -132,13 +134,14 @@
           font-family: $primary-font;
           text-align: justify;
           font-size: 0.85em !important;
+          font-weight: 500;
         }
       }
     }
 
     #skills-section {
       display: flex;
-      height: 525px;
+      // height: 525px;
       width: 100%;
       flex-direction: column;
       justify-content: space-around;
@@ -151,6 +154,7 @@
         padding: 5px 13px 0 0;
         flex: auto;
         height: 30px;
+        margin: 5px 0;
         width: auto;
         font-family: $primary-font;
         font-weight: 600;
@@ -197,6 +201,8 @@
         font-weight: bolder;
         color: #fff;
         // width: clamp(22%, 27%, 27%);
+        margin: 5px 0;
+
         width: 27%;
         overflow: auto;
         height: 30px;

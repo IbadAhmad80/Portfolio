@@ -22,6 +22,8 @@
     width: 100%;
     padding: 0 20px;
     justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
   }
 
   .items span {
@@ -227,9 +229,9 @@
       font-weight: lighter;
       color: rgb(150, 150, 150);
       margin-bottom: 15px;
-      &:not(:first-child)::before {
-        content: " | ";
-      }
+      // &:not(:first-child)::before {
+      //   content: " | ";
+      // }
     }
     #selected-project-role {
       font-size: 11pt;

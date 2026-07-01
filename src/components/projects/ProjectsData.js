@@ -42,12 +42,16 @@ import worko5 from "../../assets/worko/Capture-3.PNG";
 import portfolio3 from "../../assets/portfolio/Capture-1.PNG";
 import portfolio4 from "../../assets/portfolio/Capture-2.PNG";
 import portfolio5 from "../../assets/portfolio/Capture-3.PNG";
+import checkmate1 from "../../assets/itsacheckmate/checkmate-1.png";
+import checkmate2 from "../../assets/itsacheckmate/checkmate-2.png";
+import checkmate3 from "../../assets/itsacheckmate/checkmate-3.png";
 
 export const data = [
   {
     name: "NTT Experience",
     images: [ntt2, ntt3, ntt4, ntt5],
     image2: ntt1,
+    group: ["React"],
     technologies: " React / Globkit / Mapbox",
     category: ["React"],
     github: "https://github.com/aliahmad11403/Ntt-experience",
@@ -63,7 +67,9 @@ export const data = [
     image2:
       "https://images.unsplash.com/photo-1509315703195-529879416a7d?utm_medium=medium&w=700&q=50&auto=format",
     technologies: " React / SASS / NodeJS",
-    category: ["ReactJS", "| ", "NodeJS", "| ", "SASS"],
+    group: ["React", "NodeJS", "SASS"],
+
+    category: ["ReactJS", " / NodeJS", " / SASS"],
     github: "https://github.com/ibadahmad12/Order-ai-quiz",
     deployed: "https://order-ai-quiz.netlify.app/",
     description:
@@ -76,7 +82,9 @@ export const data = [
     images: [warbls2, warbls3, warbls4],
     image2: "https://cdn-images-1.medium.com/max/1600/0*uWq2EZFrUEX0qUhZ",
     technologies: " React / Nodejs / Redux",
-    category: ["React", "| ", "Redux", "| ", "NodeJS"],
+    group: ["React", "NodeJS", "Redux"],
+
+    category: ["React", " / Redux", " / NodeJS"],
     github: "https://github.com/faheemsajjad65/warbls",
     deployed: "https://warbls.com/",
     description:
@@ -90,7 +98,9 @@ export const data = [
     image2:
       "https://images.unsplash.com/photo-1642525027649-00d7397a6d4a?utm_medium=medium&w=700&q=50&auto=format",
     technologies: " React / SASS",
-    category: ["React", "| ", "SASS"],
+    group: ["React", "SASS"],
+
+    category: ["React", " / SASS"],
     github: "https://github.com/ibadahmad12/Soulz",
     deployed: "https://soulz.netlify.app/",
     description:
@@ -109,8 +119,10 @@ export const data = [
       travelguide7,
     ],
     image2: travelguide2,
+    group: ["React", "NodeJS"],
+
     technologies: " React / GraphQL / Apollo-Client ",
-    category: ["React", "| ", "NodeJS"],
+    category: ["React", " / NodeJS"],
     github: "https://github.com/IbadAhmad80/Brando-TravelGuide",
     deployed: "https://brando-travelguide.netlify.app/",
     description:
@@ -123,6 +135,7 @@ export const data = [
     name: "Buisniss Agency",
     images: [worko3, worko4, worko5],
     image2: trimax,
+    group: ["React"],
     technologies: " React / Bootstrap 5.0 ",
     category: ["React"],
     github: "https://github.com/IbadAhmad80/Worko",
@@ -163,7 +176,9 @@ export const data = [
     images: [portfolio3, portfolio4, portfolio5],
     image2: portfolio2,
     technologies: " React / SASS ",
-    category: ["React", "| ", "SASS", "| ", "NodeJS"],
+    group: ["React"],
+
+    category: ["React", " / SASS", " / NodeJS"],
     github: "https://github.com/IbadAhmad80/Portfolio",
     deployed: "https://findibad.netlify.app/",
     description:
@@ -177,12 +192,30 @@ export const data = [
     images: [blogging3, blogging4, blogging5],
     image2: blogging2,
     technologies: " NextJS / Strapi ",
-    category: ["React", " |", "SASS", " |", "Redux"],
+    group: ["React", "Redux"],
+
+    category: ["React", "/ SASS", "/ Redux"],
     github: "https://github.com/IbadAhmad80/Blogging-Web_App",
     deployed: "",
     description:
       "Blogging app compiled with NextJS for better server-side experience in the shape of reactJS. Implemented with Strapi CMS, contains blogs from different categories. Comments functionality is beed added on each blog. Authenticated users have an option to create a blogg too. You can become a fiture member by subscription method which is hooked up with Stripe payment gateway.At last the account section part is handled with redux js and local storage. This app is not live on internet yet, hoepfully will be in near future.",
     month_created: "March 2021",
+    role: "Full Stack",
+  },
+
+  {
+    name: "ItsaCheckmate",
+    images: [checkmate1, checkmate2, checkmate3],
+    image2: blogging2,
+    technologies: " Ruby / Rails ",
+    category: ["Ruby", , "/ Rails", "/ Circle CI", "/ React"],
+    github: "",
+    group: ["Ruby"],
+
+    deployed: "itsacheckmate.com",
+    description:
+      "ItsaCheckmate, a B2B SaaS company for restaurants, specializes in crafting cutting-edge digital ordering & delivery solutions. Creating delivery-ready menus & keeping them up-to-date on multiple third-party platforms used to be time-consuming & led to order errors. It enable you to toss the tablets & control all of your online orders & menus directly from your POS. From availability to operating hours, it'll sync any changes with the press of a button.",
+    month_created: "Aug 2022 - Mar 2024",
     role: "Full Stack",
   },
 ];

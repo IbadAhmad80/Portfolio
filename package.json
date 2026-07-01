@@ -1,36 +1,38 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "aos": "^2.3.4",
-    "axios": "^0.21.1",
-    "framer-motion": "^4.1.17",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-notifications": "^1.7.2",
-    "react-particles-js": "^3.4.1",
-    "react-responsive-carousel": "^3.2.21",
-    "react-scripts": "4.0.3",
-    "react-typing-effect": "^2.0.5",
-    "sass": "^1.32.13",
-    "web-vitals": "^1.1.2"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.8.1",
+    "aos": "^2.3.4",
+    "framer-motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.4.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-typing-effect": "^2.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "sass": "^1.83.0",
+    "vite": "^6.0.7"
   },
   "browserslist": {
     "production": [

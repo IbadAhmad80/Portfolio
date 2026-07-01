@@ -5,10 +5,10 @@
   margin: 0px 0 6vh 0;
   clip-path: polygon(0 0, 51% 13%, 100% 0, 100% 100%, 0 100%, 0 49%);
   background-color: rgb(37, 41, 52);
-  height: 800px;
+  height: 900px;
   padding: 6vh 0;
   #heading_container {
-    margin-top: 27vh;
+    margin-top: 130px;
     display: grid;
     place-items: center;
     #heading {
@@ -45,13 +45,13 @@
       outline: none;
       padding-left: 1.5em;
       height: 6vh;
-      font-size: 9pt;
       font-style: $primary-font;
       margin-top: 2vh;
       width: 460px;
       color: $primary-2-color;
       caret-color: $primary-2-color;
       border: none;
+      font-size: 15px;
       background-color: rgb(30, 36, 44);
       transition: 0.4s;
       &:focus {
