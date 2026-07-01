@@ -7,17 +7,19 @@
     display: grid;
     place-items: center;
     #main_heading {
-      color: #444649;
-      font-family: $primary-font-bold;
-      font-size: 25pt;
+      color: #2b2f36;
+      font-family: $display-font;
+      font-size: 2.4rem;
+      letter-spacing: -0.01em;
       text-transform: uppercase;
-      font-weight: bolder;
+      font-weight: 700;
     }
     #main_heading_bar {
-      background: #0d3065;
+      background: var(--gradient);
       height: 4px;
-      margin: 25px 0 60px 0;
-      width: 70px;
+      border-radius: 4px;
+      margin: 22px 0 55px 0;
+      width: 72px;
     }
   }
 

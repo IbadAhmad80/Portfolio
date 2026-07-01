@@ -13,16 +13,18 @@
     place-items: center;
     #heading {
       color: #ffffff;
-      font-family: $primary-font-bold;
-      font-size: 25pt;
+      font-family: $display-font;
+      font-size: 2.4rem;
+      letter-spacing: -0.01em;
       text-transform: uppercase;
-      font-weight: bolder;
+      font-weight: 700;
     }
     #heading_bar {
-      background: #ffffff;
+      background: var(--gradient);
       height: 4px;
-      margin: 25px 0 40px 0;
-      width: 70px;
+      border-radius: 4px;
+      margin: 22px 0 40px 0;
+      width: 72px;
     }
     #contact_sub_heading {
       color: $primary-2-color;

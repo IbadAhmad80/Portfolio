@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap");
 
 // ── Design tokens ───────────────────────────────────────────────
 $primary-font: "Raleway", sans-serif;
 $primary-font-bold: "Raleway", sans-serif;
+$display-font: "Space Grotesk", "Raleway", sans-serif;
 
 // Core palette
 $bg-dark: rgb(15, 20, 32); // page/base dark
@@ -21,6 +22,8 @@ $muted: #8f9aa7;
   --pink: #{$secondary-font};
   --muted: #{$muted};
   --font: #{$primary-font};
+  --font-display: #{$display-font};
+  --gradient: linear-gradient(100deg, #{$primary-2-color}, #{$secondary-font});
   --radius: 12px;
   --shadow: 0 20px 45px -25px rgba(0, 0, 0, 0.6);
   --transition: 0.25s ease;
